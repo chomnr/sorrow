@@ -10,9 +10,9 @@ function App() {
     <Canvas
       gl={{ antialias: false }}
       dpr={[1, 1.5]}
-      camera={{ position: [0, 0, 15], fov: 25 }}
+      camera={{ position: [-50, 15, 30], fov: 7, rotation: [0, 0, 0] }}
     >
-      <color attach="background" args={["#15151a"]} />
+      <color attach="background" args={["#101010"]} />
       <mesh scale={4} position={[3, -1.161, -1.5]} rotation={[-Math.PI / 2, 0, Math.PI / 2.5]}>
         <ringGeometry args={[0.9, 1, 4, 1]} />
         <meshStandardMaterial color="red" roughness={0.75} />
@@ -56,7 +56,8 @@ function App() {
         <Lightformer form="ring" color="red" intensity={10} scale={2} position={[10, 5, 10]} onUpdate={(self) => self.lookAt(0, 0, 0)} />
       </Environment>
       <Effects />
-      <OrbitControls enablePan={false} enableZoom={false} minPolarAngle={Math.PI / 2.2} maxPolarAngle={Math.PI / 2.2} />
+      {/* <OrbitControls enablePan={false} enableZoom={false} minPolarAngle={Math.PI / 2.2} maxPolarAngle={Math.PI / 2.2} /> */}
+      <OrbitControls />
     </Canvas>
   );
 }

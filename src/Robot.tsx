@@ -52,12 +52,11 @@ export function Robot(props: JSX.IntrinsicElements['group']) {
 
   // Animation
   React.useEffect(() => {
-    const action = actions?.['Robot_Ani1']
+    const action = actions?.['Robot_Ani3']
     if (action) {
       action.play()
     }
 
-    // Proper cleanup function
     return () => {
       if (action) {
         action.stop()
