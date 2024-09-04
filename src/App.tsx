@@ -10,7 +10,7 @@ function App() {
     <Canvas
       gl={{ antialias: false }}
       dpr={[1, 1.5]}
-      camera={{ position: [-50, 15, 30], fov: 7, rotation: [0, 0, 0] }}
+      camera={{ position: [-60, 30, 30], fov: 7, rotation: [0, 0, 0] }}
     >
       <color attach="background" args={["#101010"]} />
       <mesh scale={4} position={[3, -1.161, -1.5]} rotation={[-Math.PI / 2, 0, Math.PI / 2.5]}>
