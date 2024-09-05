@@ -43,8 +43,8 @@ export function Robot(props: JSX.IntrinsicElements['group']) {
   // GreyScale
   React.useEffect(() => {
     Object.values(materials).forEach((material) => {
-      material.color.set(0x111) // Set to a gray color
-      material.emissive.set(0x000000) // Ensure no emissive color is present
+      material.color.set(0x111)
+      material.emissive.set(0x000000)
       material.metalness = 0
       material.roughness = 1
     })

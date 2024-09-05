@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.css";
 import { Canvas } from "@react-three/fiber";
 import {
@@ -11,6 +11,9 @@ import { Effects } from "./Effects";
 import { Robot } from "./Robot";
 
 function App() {
+  const [currentTime] = useState(formatTime());
+
+  
   return (
     <div style={{ position: "relative", width: "100vw", height: "100vh" }}>
       {/* WebGL Canvas */}
@@ -80,35 +83,44 @@ function App() {
       <div className="cctv">
         {/* LEFT */}
         <div className="cctv-line-group">
-          <div className="cam-top-line"/>
+          <div className="cam-top-line" />
           <div className="cam-line" />
 
           <div className="cctv-info-group">
-            <div className="cctv-info" style={{display: 'flex', gap: '6px', alignItems: 'center'}}>
+            <div
+              className="cctv-info"
+              style={{ display: "flex", gap: "6px", alignItems: "center" }}
+            >
               <div className="record-pulse"></div>
               RECORDING
             </div>
-            <div className="cctv-info">L 11:57:20-653 AM 04/20/99</div>
+            <div className="cctv-info">L {currentTime}</div>
           </div>
         </div>
 
         {/* BOTTOM LEFT */}
         <div
           className="cctv-line-group"
-          style={{ left: '14px', bottom: "13px", transform: "rotate(270deg)" }}
+          style={{ left: "14px", bottom: "13px", transform: "rotate(270deg)" }}
         >
           <div className="cam-top-line" />
           <div className="cam-line" />
         </div>
 
         {/* TOP RIGHT */}
-        <div className="cctv-line-group" style={{right: '13px', transform: 'rotate(90deg)'}}>
+        <div
+          className="cctv-line-group"
+          style={{ right: "13px", transform: "rotate(90deg)" }}
+        >
           <div className="cam-top-line" />
           <div className="cam-line-v2" />
         </div>
 
         {/* BOTTOM RIGHT */}
-        <div className="cctv-line-group" style={{bottom: '13px', right: '13px', transform: 'rotate(270deg)'}}>
+        <div
+          className="cctv-line-group"
+          style={{ bottom: "13px", right: "13px", transform: "rotate(270deg)" }}
+        >
           <div className="cam-line-v2" />
           <div className="cam-top-line" />
         </div>
@@ -116,5 +128,25 @@ function App() {
     </div>
   );
 }
+
+const formatTime = () => {
+  const now = new Date();
+
+  let hours = now.getHours();
+  const minutes = String(now.getMinutes()).padStart(2, "0");
+  const seconds = String(now.getSeconds()).padStart(2, "0");
+  const milliseconds = String(now.getMilliseconds()).padStart(3, "0");
+
+  const ampm = hours >= 12 ? "PM" : "AM";
+
+  hours = hours % 12 || 12;
+
+  // Format date
+  const month = String(now.getMonth() + 1).padStart(2, "0");
+  const day = String(now.getDate()).padStart(2, "0");
+  const year = String(now.getFullYear()).slice(-2);
+
+  return `${hours}:${minutes}:${seconds}-${milliseconds} ${ampm} ${month}/${day}/${year}`;
+};
 
 export default App;
