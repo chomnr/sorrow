@@ -87,16 +87,17 @@ function App() {
 
       {/* HTML Overlay */}
       <div className="cctv">
+
         {/* LEFT */}
         <div className="cctv-line-group">
-          <div className="cam-top-line" />
+          <div className="cam-top-line"/>
           <div className="cam-line" />
         </div>
 
         {/* BOTTOM LEFT */}
         <div
           className="cctv-line-group"
-          style={{ bottom: "13px", transform: "rotate(270deg)" }}
+          style={{ left: '14px', bottom: "13px", transform: "rotate(270deg)" }}
         >
           <div className="cam-top-line" />
           <div className="cam-line" />
