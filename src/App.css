@@ -43,21 +43,36 @@
   background-color: white; 
   width: 2px;
   height: 105px;
-  opacity: 0.3;
+  opacity: 0.8;
 }
 
 .cam-line-v2 {
   background-color: white; 
   width: 2px;
   height: 105px;
-  opacity: 0.3;
+  opacity: 0.8;
 }
 
 .cam-top-line {
   background-color: white; 
   width: 105px;
   height: 2px;
-  opacity: 0.3;
+  opacity: 0.8;
+}
+
+/* CCTV-INFO-GROUP */
+.cctv-info-group {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.cctv-info-group .cctv-info {
+  width: 250px;;
+  font-family: 'VCR OSD MONO';
 }
 
 /* PULSE */

@@ -87,11 +87,15 @@ function App() {
 
       {/* HTML Overlay */}
       <div className="cctv">
-
         {/* LEFT */}
         <div className="cctv-line-group">
           <div className="cam-top-line"/>
           <div className="cam-line" />
+
+          <div className="cctv-info-group">
+            <div className="cctv-info">RECORDING</div>
+            <div className="cctv-info">L 11:57:20-653 AM 04/20/99</div>            
+          </div>
         </div>
 
         {/* BOTTOM LEFT */}
