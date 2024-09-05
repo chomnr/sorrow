@@ -67,15 +67,6 @@ function App() {
             position={[50, 2, 0]}
             scale={[100, 2, 1]}
           />
-          {/* Key */}
-          <Lightformer
-            form="ring"
-            color="red"
-            intensity={10}
-            scale={2}
-            position={[10, 5, 10]}
-            onUpdate={(self) => self.lookAt(0, 0, 0)}
-          />
         </Environment>
         <Effects />
         <OrbitControls
@@ -93,8 +84,11 @@ function App() {
           <div className="cam-line" />
 
           <div className="cctv-info-group">
-            <div className="cctv-info">RECORDING</div>
-            <div className="cctv-info">L 11:57:20-653 AM 04/20/99</div>            
+            <div className="cctv-info" style={{display: 'flex', gap: '6px', alignItems: 'center'}}>
+              <div className="record-pulse"></div>
+              RECORDING
+            </div>
+            <div className="cctv-info">L 11:57:20-653 AM 04/20/99</div>
           </div>
         </div>
 
