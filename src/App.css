@@ -1,3 +1,60 @@
 * {
   box-sizing: border-box;
+  padding: 0px;
+  margin: 0px;
+  font-family: "Helvetica Light";
+}
+
+@font-face {
+  font-family: "Helvetica Light";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Helvetica Light"),
+    url("/public/font/helvetica-light.woff") format("woff");
+}
+
+@font-face {
+  font-family: "VCR OSD MONO";
+  font-style: normal;
+  font-weight: normal;
+  src: local("VCR OSD MONO"),
+    url("/public/font/vcr_osd_mono.ttf") format("truetype");
+}
+
+
+.cctv {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  padding: 13px;
+  color: 'gray';
+  z-index: 1;
+  color: white;
+  width: 100vw;
+  height: 100vh;
+}
+
+.cctv-line-group {
+  position: absolute;
+}
+
+.cam-line {
+  background-color: white; 
+  width: 2px;
+  height: 105px;
+  opacity: 0.7;
+}
+
+.cam-line-v2 {
+  background-color: white; 
+  width: 2px;
+  height: 105px;
+  opacity: 0.7;
+}
+
+.cam-top-line {
+  background-color: white; 
+  width: 105px;
+  height: 2px;
+  opacity: 0.7;
 }
