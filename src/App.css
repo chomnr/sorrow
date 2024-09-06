@@ -2,25 +2,15 @@
   box-sizing: border-box;
   padding: 0px;
   margin: 0px;
-  font-family: "Helvetica Light";
+  font-family: "Helvetica";
 }
 
 @font-face {
-  font-family: "Helvetica Light";
+  font-family: "Helvetica";
   font-style: normal;
   font-weight: normal;
-  src: local("Helvetica Light"),
-    url("/public/font/helvetica-light.woff") format("woff");
+  src: local("Helvetica"), url("/public/font/Helvetica.woff") format("woff");
 }
-
-@font-face {
-  font-family: "VCR OSD MONO";
-  font-style: normal;
-  font-weight: normal;
-  src: local("VCR OSD MONO"),
-    url("/public/font/vcr_osd_mono.ttf") format("truetype");
-}
-
 
 /* CCTV */
 .cctv {
@@ -28,7 +18,7 @@
   top: 0px;
   left: 0px;
   padding: 13px;
-  color: 'gray';
+  color: "gray";
   z-index: 1;
   color: white;
   width: 100vw;
@@ -40,21 +30,21 @@
 }
 
 .cam-line {
-  background-color: white; 
+  background-color: white;
   width: 2px;
   height: 105px;
   opacity: 0.8;
 }
 
 .cam-line-v2 {
-  background-color: white; 
+  background-color: white;
   width: 2px;
   height: 105px;
   opacity: 0.8;
 }
 
 .cam-top-line {
-  background-color: white; 
+  background-color: white;
   width: 105px;
   height: 2px;
   opacity: 0.8;
@@ -72,39 +62,38 @@
 }
 
 .cctv-info-group .cctv-info {
-  width: 250px;;
-  font-family: 'VCR OSD MONO';
+  width: 250px;
 }
 
 /* PULSE */
 .record-pulse {
-	background: white;
-	border-radius: 50%;
-	height: 12px;
-	width: 12px;
+  background: white;
+  border-radius: 50%;
+  height: 12px;
+  width: 12px;
 
-	box-shadow: 0 0 0 0 rgba(230, 230, 230);
-	transform: scale(1);
-	animation: pulse 2s infinite;
+  box-shadow: 0 0 0 0 rgba(230, 230, 230);
+  transform: scale(1);
+  animation: pulse 2s infinite;
   top: 23px;
   left: 23px;
 }
 
 @keyframes pulse {
-	0% {
-		transform: scale(0.6);
-		box-shadow: 0 0 0 0 rgba(230, 230, 230, 0.7);
-	}
+  0% {
+    transform: scale(0.6);
+    box-shadow: 0 0 0 0 rgba(230, 230, 230, 0.7);
+  }
 
-	70% {
-		transform: scale(0.7);
-		box-shadow: 0 0 0 10px rgba(230, 230, 230);
-	}
+  70% {
+    transform: scale(0.7);
+    box-shadow: 0 0 0 10px rgba(230, 230, 230);
+  }
 
-	100% {
-		transform: scale(0.6);
-		box-shadow: 0 0 0 0 rgba(230, 230, 230);
-	}
+  100% {
+    transform: scale(0.6);
+    box-shadow: 0 0 0 0 rgba(230, 230, 230);
+  }
 }
 
 .record-pulse-label {

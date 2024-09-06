@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./App.css";
 import { Canvas } from "@react-three/fiber";
 import {
@@ -11,8 +11,16 @@ import { Effects } from "./Effects";
 import { Robot } from "./Robot";
 
 function App() {
-  const [currentTime] = useState(formatTime());
-
+  // todo make time update visually...
+  /*
+  const [currentTime, setCurrentTime] = useState(formatTime());
+  /*
+  useEffect(() => {
+    setTimeout(() => {
+      setCurrentTime(formatTime)
+    }, 500)
+  })
+  */
   
   return (
     <div style={{ position: "relative", width: "100vw", height: "100vh" }}>
@@ -86,6 +94,7 @@ function App() {
           <div className="cam-top-line" />
           <div className="cam-line" />
 
+          {/*
           <div className="cctv-info-group">
             <div
               className="cctv-info"
@@ -96,6 +105,7 @@ function App() {
             </div>
             <div className="cctv-info">L {currentTime}</div>
           </div>
+          */}
         </div>
 
         {/* BOTTOM LEFT */}
@@ -129,6 +139,7 @@ function App() {
   );
 }
 
+/*
 const formatTime = () => {
   const now = new Date();
 
@@ -148,5 +159,5 @@ const formatTime = () => {
 
   return `${hours}:${minutes}:${seconds}-${milliseconds} ${ampm} ${month}/${day}/${year}`;
 };
-
+*/
 export default App;
