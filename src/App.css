@@ -1,3 +1,66 @@
+/*
+  WebGL
+*/
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/*
+  Fonts 
+*/
+
+/*
+  CCTV UI 
+*/
+.cctv-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: white;
+  z-index: 1;
+  width: 100vw;
+  height: 100vh;
+}
+
+.cctv-corner-lines {
+  position: absolute;
+  padding: 13px;
+}
+
+.cctv-line-vertical {
+  background-color: white;
+  width: 2px;
+  height: 105px;
+  opacity: 0.8;
+}
+
+.cctv-line-horizontal {
+  background-color: white;
+  width: 105px;
+  height: 2px;
+  opacity: 0.8;
+}
+
+.cctv-info-container {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  user-select: none;
+}
+
+.cctv-info-item {
+  width: 250px;
+}
+
+/*
 * {
   box-sizing: border-box;
   padding: 0px;
@@ -12,7 +75,6 @@
   src: local("Helvetica"), url("/public/font/Helvetica.woff") format("woff");
 }
 
-/* CCTV */
 .cctv {
   position: absolute;
   top: 0px;
@@ -50,7 +112,7 @@
   opacity: 0.8;
 }
 
-/* CCTV-INFO-GROUP */
+
 .cctv-info-group {
   position: absolute;
   top: 10px;
@@ -65,7 +127,6 @@
   width: 250px;
 }
 
-/* PULSE */
 .record-pulse {
   background: white;
   border-radius: 50%;
@@ -101,3 +162,4 @@
   top: 35px;
   left: 70px;
 }
+*/
