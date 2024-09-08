@@ -35,6 +35,7 @@ const WEBGL_ROTATION = new Euler(0, 0, 0);
 function App() {
   return (
     <>
+      {/* THREE.JS */}
       <Canvas
         gl={{ antialias: false }}
         dpr={WEBGL_DPR}
@@ -100,6 +101,21 @@ function App() {
           />
         </group>
       </Canvas>
+
+      {/* OVERLAY */}
+      <div className="overlay">
+        <div className="bottom-container">
+          <div className="title">SORROW</div>
+          <div className="subtitle">PORTFOLIO 2024</div>
+          <nav>
+            <a href="/">HOME</a>
+            <a href="/">OPERATE</a>
+            <a href="/">GITHUB</a>
+            <a href="/">CONTACT</a>
+          </nav>
+        </div>
+      </div>
+      {/*
       <div className="cctv-container">
         <div className="cctv-corner-lines">
           <div className="cctv-line-horizontal" />
@@ -121,6 +137,7 @@ function App() {
           <div className="cctv-line-horizontal" style={{position: 'absolute', right: '13px'}}/>
         </div>
       </div>
+      */}
     </>
   );
 }

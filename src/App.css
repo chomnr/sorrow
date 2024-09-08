@@ -8,6 +8,8 @@ body,
   height: 100%;
   margin: 0;
   padding: 0;
+  font-family: "Quicksand", sans-serif;
+  color: white;
 }
 
 /*
@@ -15,8 +17,60 @@ body,
 */
 
 /*
-  CCTV UI 
+  OVERLAY
 */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.bottom-container {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  top: 17px;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  text-align: center;
+  gap: 7px;
+}
+
+.bottom-container .title {
+  font-size: 1.6rem;
+  user-select: none;
+}
+
+.bottom-container .subtitle {
+  font-size: 1rem;
+  user-select: none;
+}
+
+.bottom-container nav {
+  font-size: 0.8rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 11px;
+}
+
+.bottom-container nav a {
+  color: lightgray;
+  text-decoration: none;
+}
+
+.bottom-container nav a:hover {
+  color: white;
+}
+
+/*
+  CCTV UI 
+
 .cctv-container {
   position: absolute;
   top: 0;
@@ -59,6 +113,7 @@ body,
 .cctv-info-item {
   width: 250px;
 }
+*/
 
 /*
 * {
