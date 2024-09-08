@@ -109,7 +109,7 @@ function App() {
           <div className="subtitle">PORTFOLIO 2024</div>
           <nav>
             <a href="/">HOME</a>
-            <a href="/">OPERATE</a>
+            <a href="/">COMPUTER</a>
             <a href="/">GITHUB</a>
             <a href="/">CONTACT</a>
           </nav>
