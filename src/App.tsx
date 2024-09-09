@@ -24,8 +24,6 @@ export const MONITOR_ROTATION = [0, 0, 0];
 
 export let CURRENT_CAMERA_LOCATION: CameraLocation = CameraLocation.INITIAL
 
-export let IS_SOUND_ON: boolean = true;
-
 function App() {
   return (
     <>
@@ -47,16 +45,13 @@ function App() {
   );
 }
 
+/**
+ * Updates CURRENT_CAMERA_LOCATION.
+ *
+ * @param {number} cameraLocation - The location where you want the camera to be.
+ */
 export function updateCameraLocation(cameraLocation: CameraLocation) {
   CURRENT_CAMERA_LOCATION = cameraLocation
-}
-
-export function toggleSound() {
-  if (IS_SOUND_ON) {
-    IS_SOUND_ON = false;
-  } else {
-    IS_SOUND_ON = true
-  }
 }
 
 export default App;
