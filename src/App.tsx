@@ -19,6 +19,7 @@ import {
   Noise,
   Vignette,
 } from "@react-three/postprocessing";
+import { Desk } from "./model/Desk";
 
 /**
  * VARIABLES
@@ -48,6 +49,7 @@ function App() {
         <color attach={WEBGL_BACKGROUND[0]} args={[WEBGL_BACKGROUND[1]]} />
         <group position={[-0, -1, 0]}>
           <Robot />
+          <Desk position={[-0, -0, 3]} />
           {/* Plane reflections + distance blur */}
           <mesh receiveShadow rotation={[-Math.PI / 2, 0, 0]}>
             <planeGeometry args={[50, 50]} />
@@ -107,10 +109,10 @@ function App() {
         <div className="bottom-container">
           <div className="title">S O R R O W</div>
           <nav>
-            <a href="/">HOME</a>
+            <a href="#">HOME</a>
             <a href="/">COMPUTER</a>
-            <a href="/">GITHUB</a>
-            <a href="/">CONTACT</a>
+            <a href="https://github.com/chomnr">GITHUB</a>
+            <a href="mailto:me@zeljko.me">CONTACT</a>
           </nav>
         </div>
       </div>
