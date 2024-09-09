@@ -29,6 +29,7 @@ export function Overlay() {
           <a href="https://github.com/chomnr">GITHUB</a>
           <a href="mailto:me@zeljko.me">CONTACT</a>
         </nav>
+        {/*
         <div style={{ textAlign: 'center', userSelect: 'none' }}>
         <img
             width="20"
@@ -41,6 +42,7 @@ export function Overlay() {
             style={{ cursor: 'pointer' }}
           />
         </div>
+        */}
       </div>
     </div>
   );
