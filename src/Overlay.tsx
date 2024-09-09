@@ -13,28 +13,3 @@ export function Overlay() {
       </div>
     )
 }
-
-
-/*
-      <div className="cctv-container">
-        <div className="cctv-corner-lines">
-          <div className="cctv-line-horizontal" />
-          <div className="cctv-line-vertical" />
-        </div>
-
-        <div className="cctv-corner-lines" style={{position: 'absolute', bottom: '0'}}>
-          <div className="cctv-line-vertical" />
-          <div className="cctv-line-horizontal" />
-        </div>
-
-        <div className="cctv-corner-lines" style={{position: 'absolute', right: '0'}}>
-          <div className="cctv-line-horizontal" />
-          <div className="cctv-line-vertical" style={{position: 'absolute', right: '13px'}} />
-        </div>
-
-        <div className="cctv-corner-lines" style={{position: 'absolute', right: '0', bottom: '0'}}>
-          <div className="cctv-line-vertical"/>
-          <div className="cctv-line-horizontal" style={{position: 'absolute', right: '13px'}}/>
-        </div>
-      </div>
-      */
