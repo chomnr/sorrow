@@ -65,6 +65,7 @@ body,
   color: lightgray;
   text-decoration: none;
   user-select: none;
+  cursor: pointer;
 }
 
 .bottom-container nav a:hover {
