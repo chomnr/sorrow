@@ -18,9 +18,6 @@ const MONITOR_POSITION = new Vector3(0, 0, 0);
 const MONITOR_FOV = 5;
 const MONITOR_ROTATION = new Euler(0, 0, 0);
 
-/**
- * APP
- **/
 function App() {
   return (
     <>
