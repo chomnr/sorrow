@@ -79,11 +79,9 @@ function App() {
 /**
  * SCENE
  **/
-
 function Scene() {
   const meshRef = useRef<Mesh>(null);
   const cameraControlsRef = useRef<CameraControls>(null);
-
   const { camera } = useThree();
 
   return (
@@ -154,6 +152,9 @@ function Scene() {
   );
 }
 
+/**
+ * EFFECTS
+ **/
 function Effects() {
   return (
     <EffectComposer>
