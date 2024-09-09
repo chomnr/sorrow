@@ -105,8 +105,7 @@ function App() {
       {/* OVERLAY */}
       <div className="overlay">
         <div className="bottom-container">
-          <div className="title">SORROW</div>
-          <div className="subtitle">PORTFOLIO 2024</div>
+          <div className="title">S O R R O W</div>
           <nav>
             <a href="/">HOME</a>
             <a href="/">COMPUTER</a>
