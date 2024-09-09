@@ -46,7 +46,6 @@ const WEBGL_ROTATION = new Euler(0, 0, 0);
  * GLOBAL
  **/
 function App() {
-  // put camera click events and nav events here...
   return (
     <>
       {/* SCENE */}
@@ -61,7 +60,6 @@ function App() {
       >
         <Scene/>
       </Canvas>
-
       {/* OVERLAY */}
       <div className="overlay">
         <div className="bottom-container">
@@ -77,6 +75,10 @@ function App() {
     </>
   );
 }
+
+/**
+ * SCENE
+ **/
 
 function Scene() {
   const meshRef = useRef<Mesh>(null);
