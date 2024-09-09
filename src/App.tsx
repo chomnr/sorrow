@@ -4,6 +4,7 @@ import { Canvas, Dpr } from "@react-three/fiber";
 import { Euler, Vector3 } from "three";
 import { Scene } from "./Scene";
 import { Overlay } from "./Overlay";
+import { ToggleableSound } from "./Context";
 
 export enum CameraLocation {
   INITIAL,
@@ -23,6 +24,8 @@ export const MONITOR_ROTATION = [0, 0, 0];
 
 export let CURRENT_CAMERA_LOCATION: CameraLocation = CameraLocation.INITIAL
 
+export let IS_SOUND_ON: boolean = true;
+
 function App() {
   return (
     <>
@@ -37,13 +40,23 @@ function App() {
       >
       <Scene/>
       </Canvas>
-      <Overlay/>
+      <ToggleableSound>
+        <Overlay/>
+      </ToggleableSound>
     </>
   );
 }
 
 export function updateCameraLocation(cameraLocation: CameraLocation) {
   CURRENT_CAMERA_LOCATION = cameraLocation
+}
+
+export function toggleSound() {
+  if (IS_SOUND_ON) {
+    IS_SOUND_ON = false;
+  } else {
+    IS_SOUND_ON = true
+  }
 }
 
 export default App;
