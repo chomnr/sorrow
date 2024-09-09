@@ -1,5 +1,4 @@
-import { useFrame, useThree } from "@react-three/fiber";
-import { Mesh } from "three";
+import { useFrame } from "@react-three/fiber";
 import { Robot } from "./model/Robot";
 import {
   CameraControls,
