@@ -4,7 +4,7 @@ export function Overlay() {
         <div className="bottom-container">
           <div className="title">S O R R O W</div>
           <nav>
-            <a href="#">HOME</a>
+            <a id="home" href="/">HOME</a>
             <a id="about" href="#about">ABOUT</a>
             <a href="https://github.com/chomnr">GITHUB</a>
             <a href="mailto:me@zeljko.me">CONTACT</a>
