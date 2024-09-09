@@ -21,7 +21,6 @@ export function Scene() {
       cameraControlsRef.current.update(0);
     }
   });
-  // effect
   useEffect(() => {
     // camera
     const cameraMoveListener = (e: CustomEvent) => {
