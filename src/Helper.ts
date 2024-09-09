@@ -6,9 +6,6 @@ import {
   updateCameraLocation,
 } from "./App";
 
-import React, { createContext, useContext, useState } from 'react';
-
-
 /**
  * Dispatches a custom event named "virtual_move_camera_event" with the specified CameraLocation.
  *
