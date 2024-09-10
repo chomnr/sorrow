@@ -6,7 +6,7 @@ interface SoundContextType {
   }
   
   const defaultContextValue: SoundContextType = {
-    isSoundOn: true,
+    isSoundOn: false,
     toggleSound: () => {} 
   };
   
@@ -17,7 +17,7 @@ interface SoundContextType {
   }
   
   export function ToggleableSound({ children }: ToggleableSoundProps) {
-    const [isSoundOn, setIsSoundOn] = useState(true);
+    const [isSoundOn, setIsSoundOn] = useState(false);
   
     const toggleSound = () => {
       setIsSoundOn(prevState => !prevState);
