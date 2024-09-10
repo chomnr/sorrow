@@ -1,4 +1,5 @@
 import {
+  CameraControls,
   Environment,
   Lightformer,
   MeshReflectorMaterial,
@@ -6,17 +7,35 @@ import {
 } from "@react-three/drei";
 import { BACKGROUND_COLOR } from "../Position";
 import { Robot } from "../model/Robot";
-import { EffectComposer, DepthOfField, Bloom, Noise, Vignette } from "@react-three/postprocessing";
 import { useLoading } from "../context/LoadingContext";
+import { useFrame } from "@react-three/fiber";
+import { useEffect, useRef } from "react";
+import { Mesh } from "three/src/objects/Mesh";
 
 export function Scene() {
-  const { setLoading } = useLoading();
-
+  const { isLoading } = useLoading();
+  // const meshRef = useRef<Mesh>(null);
+  // const { camera } = useThree();
+  const cameraControlsRef = useRef<CameraControls>(null);
+  useFrame(() => {
+    if (cameraControlsRef.current) {
+      cameraControlsRef.current.update(0);
+    }
+  });
+  useEffect(() => {
+    if (!isLoading) {
+      setTimeout(() => {
+        if (cameraControlsRef.current) {
+          cameraControlsRef.current.setLookAt(-60, 30, 30, 0, 0, 0, true);
+        }
+      }, 50);
+    }
+  });
   return (
     <>
       <color attach={"background"} args={[BACKGROUND_COLOR]} />
       <group position={[-0, -1, 0]}>
-        <Robot/>
+        <Robot />
         <mesh receiveShadow rotation={[-Math.PI / 2, 0, 0]}>
           <planeGeometry args={[50, 50]} />
           <MeshReflectorMaterial
@@ -59,17 +78,14 @@ export function Scene() {
             scale={[100, 2, 1]}
           />
         </Environment>
-        <OrbitControls
-          enableDamping={false}
-          enableZoom={false}
-          enableRotate={false}
-        />
-        {/*
         <CameraControls
           ref={cameraControlsRef}
-          minDistance={0}
           enabled={true}
-        /> */}
+          dollySpeed={0}
+          maxSpeed={0}
+          polarRotateSpeed={0}
+          azimuthRotateSpeed={0}
+        />
       </group>
     </>
   );
