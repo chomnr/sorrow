@@ -1,44 +1,22 @@
-import { useFrame } from "@react-three/fiber";
-import { Robot } from "./model/Robot";
 import {
-  CameraControls,
   Environment,
   Lightformer,
   MeshReflectorMaterial,
   OrbitControls,
 } from "@react-three/drei";
-import { Composer } from "./Composer";
-import { useEffect, useRef } from "react";
-import { BACKGROUND } from "./App";
+import { BACKGROUND_COLOR } from "../Position";
+import { Robot } from "../model/Robot";
+import { EffectComposer, DepthOfField, Bloom, Noise, Vignette } from "@react-three/postprocessing";
+import { useLoading } from "../context/LoadingContext";
 
 export function Scene() {
-  // camera
-  // const meshRef = useRef<Mesh>(null);
-  const cameraControlsRef = useRef<CameraControls>(null);
-  // const { camera } = useThree();
-  useFrame(() => {
-    if (cameraControlsRef.current) {
-      cameraControlsRef.current.update(0);
-    }
-  });
-  useEffect(() => {
-    // camera
-    const cameraMoveListener = (e: CustomEvent) => {
-      const { x, y, z } = e.detail;
-      cameraControlsRef.current?.setLookAt(x, y, z, 0, 0, 0, true);
-    };
-    document.addEventListener("virtual_move_camera_event", cameraMoveListener as EventListener);
-    return () => {
-      document.removeEventListener("virtual_move_camera_event", cameraMoveListener as EventListener);
-    };
-  }, []);
+  const { setLoading } = useLoading();
+
   return (
     <>
-      <color attach={BACKGROUND[0]} args={[BACKGROUND[1]]} />
+      <color attach={"background"} args={[BACKGROUND_COLOR]} />
       <group position={[-0, -1, 0]}>
-        <Robot />
-        {/*<Desk/> <Desk position={[0, 0, 3]} /> */}
-        {/* Plane reflections + distance blur */}
+        <Robot/>
         <mesh receiveShadow rotation={[-Math.PI / 2, 0, 0]}>
           <planeGeometry args={[50, 50]} />
           <MeshReflectorMaterial
@@ -56,7 +34,6 @@ export function Scene() {
           />
         </mesh>
         <Environment resolution={512}>
-          {/* Ceiling Lights */}
           <Lightformer
             intensity={2}
             rotation-x={Math.PI / 2}
@@ -69,7 +46,6 @@ export function Scene() {
             position={[0, 4, 0]}
             scale={[10, 1, 1]}
           />
-          {/* Sides */}
           <Lightformer
             intensity={2}
             rotation-y={Math.PI / 2}
@@ -83,18 +59,17 @@ export function Scene() {
             scale={[100, 2, 1]}
           />
         </Environment>
-        <Composer />
         <OrbitControls
           enableDamping={false}
           enableZoom={false}
           enableRotate={false}
         />
-        {/* Camera Controls */}
+        {/*
         <CameraControls
           ref={cameraControlsRef}
           minDistance={0}
           enabled={true}
-        />
+        /> */}
       </group>
     </>
   );
