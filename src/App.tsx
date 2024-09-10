@@ -14,6 +14,8 @@ import {
 } from "@react-three/postprocessing";
 import { LoadingScreen } from "./component/LoadingScreen";
 import { LoadingProvider } from "./context/LoadingContext";
+import { BackgroundSound } from "./component/BackgroundSound";
+import { SoundContext, ToggleableSound } from "./context/SoundContext";
 
 function App() {
   return (
@@ -29,7 +31,10 @@ function App() {
           </Suspense>
           <Effect />
         </Canvas>
-        <LoadingScreen />
+        <ToggleableSound>
+          <BackgroundSound />
+          <LoadingScreen />
+        </ToggleableSound>
       </LoadingProvider>
     </>
   );
