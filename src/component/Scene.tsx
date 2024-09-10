@@ -3,14 +3,12 @@ import {
   Environment,
   Lightformer,
   MeshReflectorMaterial,
-  OrbitControls,
 } from "@react-three/drei";
 import { BACKGROUND_COLOR } from "../Position";
 import { Robot } from "../model/Robot";
 import { useLoading } from "../context/LoadingContext";
 import { useFrame } from "@react-three/fiber";
 import { useEffect, useRef } from "react";
-import { Mesh } from "three/src/objects/Mesh";
 
 export function Scene() {
   const { isLoading } = useLoading();
@@ -28,7 +26,7 @@ export function Scene() {
         if (cameraControlsRef.current) {
           cameraControlsRef.current.setLookAt(-60, 30, 30, 0, 0, 0, true);
         }
-      }, 50);
+      }, 20);
     }
   });
   return (
