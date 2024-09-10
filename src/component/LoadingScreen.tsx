@@ -43,7 +43,7 @@ export function LoadingScreen() {
         if (newValue < value) {
           updateLoader(loaderRef, isWidth, value, nextLoaderFn);
         } else if (nextLoaderFn) {
-          setTimeout(nextLoaderFn, 1000);
+          setTimeout(nextLoaderFn, 659);
         }
       }
     };
@@ -54,11 +54,9 @@ export function LoadingScreen() {
       updateLoader(rl, false, value, () => {
         updateLoader(bl, true, value, () => {
           updateLoader(ll, false, value, () => {
-            setTimeout(() => {
-              setIsComplete(true);
-              if (loadingBox.current)
-                loadingBox.current.classList.add("finished");
-            }, 600);
+            setIsComplete(true);
+            if (loadingBox.current)
+              loadingBox.current.classList.add("finished");
           });
         });
       });
@@ -87,18 +85,24 @@ export function LoadingScreen() {
               BEGIN
             </div>
             <div className="subtitle">S O R R O W</div>
+
+            <div ref={tl} className="loader-top" style={{width: "100%"}}></div> {/* WIDTH */}
+            <div ref={ll} className="loader-left" style={{height: "100%"}}></div> {/* HEIGHT */}
+            <div ref={bl} className="loader-bottom" style={{width: "100%"}}></div> {/* WIDTH */}
+            <div ref={rl} className="loader-right" style={{height: "100%"}}></div> {/* HEIGHT */}
           </>
         ) : (
           <>
             <div className="subtitle">PORTFOLIO 2024</div>
             <div className="title">ZELJKO</div>
             <div className="subtitle">SORROW</div>
-          </>
-        )}
-        <div ref={tl} className="loader-top"></div> {/* WIDTH */}
+
+            <div ref={tl} className="loader-top"></div> {/* WIDTH */}
         <div ref={ll} className="loader-left"></div> {/* HEIGHT */}
         <div ref={bl} className="loader-bottom"></div> {/* WIDTH */}
         <div ref={rl} className="loader-right"></div> {/* HEIGHT */}
+          </>
+        )}
       </div>
     </div>
   );
