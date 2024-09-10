@@ -5,7 +5,7 @@ import { useLoading } from "../context/LoadingContext";
 export function LoadingScreen() {
   const { progress } = useProgress();
   const [isComplete, setIsComplete] = useState<boolean>(false);
-  const { setLoading } = useLoading()
+  const { setLoading } = useLoading();
 
   const loadingScreen = useRef<HTMLDivElement>(null);
   const loadingBox = useRef<HTMLDivElement>(null);
@@ -42,7 +42,7 @@ export function LoadingScreen() {
             updateLoader(loaderRef, isWidth, value, nextLoaderFn)
           );
         } else if (nextLoaderFn) {
-          nextLoaderFn();
+          setTimeout(nextLoaderFn, 1000);
         }
       }
     };
@@ -54,10 +54,10 @@ export function LoadingScreen() {
         updateLoader(bl, true, value, () => {
           updateLoader(ll, false, value, () => {
             setTimeout(() => {
-              setIsComplete(true)
+              setIsComplete(true);
               if (loadingBox.current)
-                loadingBox.current.classList.add("finished")
-            }, 1400);
+                loadingBox.current.classList.add("finished");
+            }, 600);
           });
         });
       });
@@ -67,9 +67,8 @@ export function LoadingScreen() {
   // propogate
   const propagate = () => {
     if (isComplete) {
-      setLoading(true);
-      if (loadingScreen.current)
-        loadingScreen.current.style.display = "none";
+      setLoading(false);
+      if (loadingScreen.current) loadingScreen.current.style.display = "none";
     }
   };
 
@@ -78,7 +77,13 @@ export function LoadingScreen() {
       <div ref={loadingBox} onClick={propagate} className="loading-box">
         {isComplete ? (
           <>
-            <div ref={begin} className="title begin" style={{fontWeight: "400"}}>BEGIN</div>
+            <div
+              ref={begin}
+              className="title begin"
+              style={{ fontWeight: "400" }}
+            >
+              BEGIN
+            </div>
             <div className="subtitle">I M M E R S I O N</div>
           </>
         ) : (
@@ -96,35 +101,3 @@ export function LoadingScreen() {
     </div>
   );
 }
-
-/*
- <div className="loading-screen">
-      {isComplete ? (
-        <div className="loading-box">
-          <div className="loading-box">
-            <div className="title">START</div>
-          </div>
-          </div>
-        ) : (
-          <div className="loading-box">
-            <div className="subtitle">PORTFOLIO 2024</div>
-            <div className="title">ZELJKO</div>
-            <div className="subtitle">01010011</div>
-            <div ref={tl} className="loader-top"></div>
-            <div ref={ll} className="loader-left"></div>
-            <div ref={bl} className="loader-bottom"></div>
-            <div ref={rl} className="loader-right"></div> 
-          </div>
-        )}
-  
-        <div className="loading-box">
-          <div className="subtitle">PORTFOLIO 2024</div>
-          <div className="title">ZELJKO</div>
-          <div className="subtitle">01010011</div>
-          <div ref={tl} className="loader-top"></div>
-          <div ref={ll} className="loader-left"></div>
-          <div ref={bl} className="loader-bottom"></div>
-          <div ref={rl} className="loader-right"></div>
-        </div>
-      </div>
-*/
