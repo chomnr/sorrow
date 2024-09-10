@@ -41,9 +41,7 @@ export function LoadingScreen() {
           loaderRef.current.style.height = `${newValue}%`;
         }
         if (newValue < value) {
-          requestAnimationFrame(() =>
-            updateLoader(loaderRef, isWidth, value, nextLoaderFn)
-          );
+          updateLoader(loaderRef, isWidth, value, nextLoaderFn);
         } else if (nextLoaderFn) {
           setTimeout(nextLoaderFn, 1000);
         }
