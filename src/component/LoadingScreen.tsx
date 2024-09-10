@@ -1,11 +1,14 @@
 import { useProgress } from "@react-three/drei";
 import { useEffect, useRef, useState } from "react";
 import { useLoading } from "../context/LoadingContext";
+import { useSound } from "../context/SoundContext";
 
 export function LoadingScreen() {
   const { progress } = useProgress();
-  const [isComplete, setIsComplete] = useState<boolean>(false);
+  const [ isComplete, setIsComplete ] = useState<boolean>(false);
   const { setLoading } = useLoading();
+  const { toggleSound } = useSound();
+
 
   const loadingScreen = useRef<HTMLDivElement>(null);
   const loadingBox = useRef<HTMLDivElement>(null);
@@ -68,6 +71,7 @@ export function LoadingScreen() {
   const propagate = () => {
     if (isComplete) {
       setLoading(false);
+      toggleSound();
       if (loadingScreen.current) loadingScreen.current.style.display = "none";
     }
   };
@@ -84,13 +88,13 @@ export function LoadingScreen() {
             >
               BEGIN
             </div>
-            <div className="subtitle">I M M E R S I O N</div>
+            <div className="subtitle">S O R R O W</div>
           </>
         ) : (
           <>
             <div className="subtitle">PORTFOLIO 2024</div>
             <div className="title">ZELJKO</div>
-            <div className="subtitle">01010011</div>
+            <div className="subtitle">SORROW</div>
           </>
         )}
         <div ref={tl} className="loader-top"></div> {/* WIDTH */}
