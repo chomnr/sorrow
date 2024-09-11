@@ -43,7 +43,7 @@ export function LoadingScreen() {
         if (newValue < value) {
           updateLoader(loaderRef, isWidth, value, nextLoaderFn);
         } else if (nextLoaderFn) {
-          setTimeout(nextLoaderFn, 659);
+          setTimeout(nextLoaderFn, 700);
         }
       }
     };
