@@ -24,6 +24,9 @@ export function Scene() {
     if (!isLoading) {
       setTimeout(() => {
         if (cameraControlsRef.current) {
+          // play swoosh
+          let audio = new Audio("/sound/wooshes/sfx_whoosh_4.wav");
+          audio.play();
           cameraControlsRef.current.setLookAt(-60, 30, 30, 0, 0, 0, true);
         }
       }, 20);
