@@ -3,6 +3,7 @@ import React from 'react'
 import { useGraph } from '@react-three/fiber'
 import { useGLTF, useAnimations } from '@react-three/drei'
 import { GLTF, SkeletonUtils } from 'three-stdlib'
+import { useLoading } from '../context/LoadingContext'
 
 type RobotActionName = 'Animation_1' | 'Animation_2' | 'Animation_3'
 
@@ -37,6 +38,9 @@ export function Robot(props: JSX.IntrinsicElements['group']) {
   const { nodes, materials } = useGraph(clone) as GLTFResult
   const { actions } = useAnimations(animations, group)
 
+  const { isLoading } = useLoading();
+
+
   // GreyScale
   React.useEffect(() => {
     Object.values(materials).forEach((material) => {
@@ -50,7 +54,7 @@ export function Robot(props: JSX.IntrinsicElements['group']) {
   // Animation
   React.useEffect(() => {
     const action = actions?.['Animation_3']
-    if (action) {
+    if (action && !isLoading) {
       action.play()
     }
 
@@ -59,7 +63,7 @@ export function Robot(props: JSX.IntrinsicElements['group']) {
         action.stop()
       }
     }
-  }, [actions])
+  }, [actions, isLoading])
 
   return (
     <group ref={group} {...props} dispose={null}>
