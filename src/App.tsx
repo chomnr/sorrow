@@ -15,6 +15,7 @@ import { LoadingScreen } from "./component/LoadingScreen";
 import { LoadingProvider } from "./context/LoadingContext";
 import { BackgroundSound } from "./component/BackgroundSound";
 import { ToggleableSound } from "./context/SoundContext";
+import { Overlay } from "./component/Overlay";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
         <ToggleableSound>
           <BackgroundSound />
           <LoadingScreen />
+          <Overlay/>
         </ToggleableSound>
       </LoadingProvider>
     </>
