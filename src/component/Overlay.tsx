@@ -12,10 +12,25 @@ export function Overlay() {
   return (
     <>
       <div className="overlay">
+        <div className="top">
+          <div className="text">Z E L J K O &nbsp;&nbsp;V R A N J E S</div>
+          <div className="text smaller">
+            S O F T W A R E &nbsp;&nbsp;E N G I N E E R
+          </div>
+          <div className="icons">
+            <a href="https://github.com/chomnr">
+              <img alt="github" src="/image/github.png"></img>
+            </a>
+            <a href="https://blog.zeljkovranjes.com/">
+              <img alt="blog" src="/image/write.png"></img>
+            </a>
+          </div>
+        </div>
         <div className="bottom">
-          <div onClick={toggleSound} className="sound-container">
+          <div className="sound-container">
             <div className="label">S O U N D</div>
             <img
+              onClick={toggleSound}
               src={isSoundOn ? "/image/speaker.png" : "/image/mute.png"}
               alt="sound-speaker"
             />
