@@ -1,18 +1,12 @@
 import React, { createContext, useContext, useState, ReactNode } from 'react';
 
-enum PhaseFlag {
-  EnableBackgroundMusic = 1 << 0,
-  EnableSoundEffects = 1 << 1, 
-  EnableHints = 1 << 2,
-  EnableDebugMode = 1 << 3,
-  DisableUserInput = 1 << 4,
-  DisableSpamClick = 1 << 5,
-}
-
 export enum Phase {
-  Loading = PhaseFlag.DisableUserInput | PhaseFlag.DisableSpamClick,
-  Loaded = PhaseFlag.DisableSpamClick | PhaseFlag.DisableUserInput,
-  Begun
+  Loading = 0,
+  Loaded = 1,
+  Begun = 2,
+  RobotAnnoyed = 3,
+  RobotCalming = 4,
+  RobotCalmed = 5
 }
 
 interface PhaseContextType {
