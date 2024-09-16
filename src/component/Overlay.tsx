@@ -21,6 +21,9 @@ export function Overlay() {
             <a href="https://github.com/chomnr">
               <img alt="github" src="/image/github.png"></img>
             </a>
+            <a href="https://github.com/chomnr/sorrow/">
+              <img alt="blog" src="/image/code.png"></img>
+            </a>
             <a href="https://blog.zeljkovranjes.com/">
               <img alt="blog" src="/image/write.png"></img>
             </a>
