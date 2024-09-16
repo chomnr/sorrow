@@ -43,10 +43,10 @@ export function Effect() {
       }
 
       if (phase === Phase.RobotAngry) {
-        glitch.minStrength = 0.5;
-        glitch.maxStrength = 0.9;
-        glitch.minDuration = 0.5;
-        glitch.maxDuration = 0.9;
+        glitch.minStrength = 1;
+        glitch.maxStrength = 5;
+        glitch.minDuration = 1;
+        glitch.maxDuration = 5;
         glitch.ratio = 0.70;
       }
     }
@@ -60,7 +60,7 @@ export function Effect() {
         height={480}
       />
       <Bloom luminanceThreshold={0.3} luminanceSmoothing={0.8} height={300} />
-      <Sepia intensity={0.6} />
+      <Sepia intensity={1.3} />
       <Vignette eskil={false} offset={0.2} darkness={1.5} />
       <ChromaticAberration
         offset={new Vector2(0.002, 0.002)}
