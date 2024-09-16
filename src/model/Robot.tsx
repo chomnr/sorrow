@@ -64,6 +64,7 @@ export function Robot(props: JSX.IntrinsicElements["group"]) {
       if (phase === Phase.Begun) {
         return handleAnimation(action, Phase.RobotAnnoyed, 4.9, () => {
           setTimeout(() => {
+            setAnnoyance(17);
             setPhase(Phase.RobotCalming);
           }, 5153);
         });
@@ -75,11 +76,28 @@ export function Robot(props: JSX.IntrinsicElements["group"]) {
           action,
           Phase.RobotCalmed,
           clipDuration - 0.2,
-          () => {}
+          () => {
+            setAnnoyance(17);
+          }
         );
       }
     }
-  }, [action, annoyance, phase]);
+
+    // ANGRY (head down phase)
+    if (action && annoyance >= 37 && phase === Phase.RobotCalmed) {
+      const mixer = action.getMixer()
+      mixer.timeScale = 6
+      action.play()
+      action.paused = false
+      setTimeout(() => {
+        action.paused = true
+        setTimeout(() => {
+          setPhase(Phase.RobotAngry)
+        })
+      }, 1100)
+      console.log("angry")
+    }
+  }, [action, annoyance, phase, setPhase]);
 
   // Model
   return (
