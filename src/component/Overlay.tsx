@@ -1,13 +1,11 @@
-import { useLoading } from "../context/LoadingContext";
 import { Phase, usePhase } from "../context/PhaseContext";
 import { useSound } from "../context/SoundContext";
 
 export function Overlay() {
   const { phase } = usePhase();
   const { isSoundOn, toggleSound } = useSound();
-  const { isLoading } = useLoading();
 
-  if (phase !== Phase.Begun) {
+  if (phase === Phase.Loading || phase === Phase.Loaded) {
     return null;
   }
 
