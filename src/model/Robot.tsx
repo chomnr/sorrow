@@ -11,69 +11,75 @@ import { Phase, usePhase } from "../context/PhaseContext";
 
 export function Robot(props: JSX.IntrinsicElements["group"]) {
   const group = useRef<Group>(null);
-  const { nodes, materials, animations } = useGLTF("/robot.glb")
-  const { actions } = useAnimations(animations, group)
-  const { phase, setPhase } = usePhase()
+  const { nodes, materials, animations } = useGLTF("/robot.glb");
+  const { actions } = useAnimations(animations, group);
+  const { phase, setPhase } = usePhase();
 
   // Custom Material: Robot
-  const robotShell = new MeshStandardMaterial({ color: "black", roughness: 1 })
-  const robotOrgan = new MeshStandardMaterial({ color: "black", roughness: 1 })
+  const robotShell = new MeshStandardMaterial({ color: "black", roughness: 1 });
+  const robotOrgan = new MeshStandardMaterial({ color: "black", roughness: 1 });
 
   // Animation Hook: Handles animations
-  const action = actions["Animation_3"]
+  const action = actions["Animation_3"];
 
   if (action) {
-    action.play()
-    action.paused = true
+    action.play();
+    action.paused = true;
   }
 
   // Easter Egg: Annoyance
   const [annoyance, setAnnoyance] = useState(0);
   const annoy = () => {
-    setAnnoyance((prev) => prev + 1)
+    setAnnoyance((prev) => prev + 1);
   };
-
   useEffect(() => {
+    const handleAnimation = (
+      action: AnimationAction,
+      targetPhase: Phase,
+      animationLimit: number,
+      callback: { (): void; (): void; (): void }
+    ) => {
+      const mixer = action.getMixer();
+      mixer.timeScale = 0.5;
+      action.play();
+      action.paused = false;
+      const intervalId = setInterval(() => {
+        mixer.update(0.016);
+        const animationTime = action.time;
+        if (animationTime >= animationLimit) {
+          action.paused = true;
+          clearInterval(intervalId);
+          setPhase(targetPhase);
+          if (callback) callback();
+        }
+      }, 1000 / 60);
+      return () => {
+        clearInterval(intervalId);
+        action.paused = true;
+      };
+    };
+
     if (action && annoyance >= 17) {
-      const mixer = action.getMixer()
-      mixer.timeScale = 0.5
-      action.play()
-      action.paused = false
-  
-      let intervalId: NodeJS.Timeout
-  
+      // head up pause
       if (phase === Phase.Begun) {
-        intervalId = setInterval(() => {
-          mixer.update(0.016)
-          if (action.time >= 4.9) {
-            action.paused = true
-            clearInterval(intervalId)
-            setPhase(Phase.RobotAnnoyed)
-            setTimeout(() => {
-              setPhase(Phase.RobotCalming)
-            }, 5153);
-          }
-        }, 1000 / 60);
+        return handleAnimation(action, Phase.RobotAnnoyed, 4.9, () => {
+          setTimeout(() => {
+            setPhase(Phase.RobotCalming);
+          }, 5153);
+        });
       }
-  
+      // head down pause
       if (phase === Phase.RobotCalming) {
         const clipDuration = action.getClip().duration;
-        intervalId = setInterval(() => {
-          mixer.update(0.016)
-          if (action.time >= clipDuration - 0.2) {
-            action.paused = true
-            clearInterval(intervalId)
-            setPhase(Phase.RobotCalmed)
-          }
-        }, 1000 / 60)
+        return handleAnimation(
+          action,
+          Phase.RobotCalmed,
+          clipDuration - 0.2,
+          () => {}
+        );
       }
-  
-      return () => {
-        clearInterval(intervalId)
-        action.paused = true
-      };
     }
-  }, [action, annoyance, phase, setPhase])
+  }, [action, annoyance, phase]);
 
   // Model
   return (
