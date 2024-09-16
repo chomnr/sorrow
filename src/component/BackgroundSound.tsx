@@ -80,7 +80,7 @@ export function BackgroundSound() {
         source.stop()
       }
     };
-  }, [isSoundOn]);
+  }, [audioUrl, isSoundOn]);
 
   useEffect(() => {
     if (isSoundOn && audioContextRef.current && sourceRef.current === null) {
@@ -95,7 +95,7 @@ export function BackgroundSound() {
     } else if (!isSoundOn) {
       stopAudio()
     }
-  }, [isSoundOn])
+  }, [audioUrl, isSoundOn])
 
   return <div></div>
 }
