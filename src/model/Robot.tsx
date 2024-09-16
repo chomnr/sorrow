@@ -31,7 +31,6 @@ export function Robot(props: JSX.IntrinsicElements["group"]) {
   const [annoyance, setAnnoyance] = useState(0);
   const annoy = () => {
     setAnnoyance((prev) => prev + 1);
-    console.log(annoyance);
   };
   useEffect(() => {
     const handleAnimation = (
