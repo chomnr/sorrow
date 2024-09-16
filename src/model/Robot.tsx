@@ -95,7 +95,6 @@ export function Robot(props: JSX.IntrinsicElements["group"]) {
           setPhase(Phase.RobotAngry)
         })
       }, 1100)
-      console.log("angry")
     }
   }, [action, annoyance, phase, setPhase]);
 
