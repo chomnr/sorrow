@@ -8,7 +8,6 @@ export function LoadingScreen() {
   const { phase, setPhase } = usePhase();
   const { toggleSound } = useSound();
 
-
   // References
   const ref = {
     screen: useRef<HTMLDivElement>(null),
@@ -80,7 +79,7 @@ export function LoadingScreen() {
             setPhase(Phase.Begun);
             let audio = new Audio("/sound/wooshes/sfx_whoosh_4.wav");
             audio.play();
-            toggleSound()
+            toggleSound();
           }
         }}
         className="loading-box"
@@ -99,26 +98,22 @@ export function LoadingScreen() {
               ref={ref.top}
               className="loader-top"
               style={{ width: "100%" }}
-            ></div>{" "}
-            {/* WIDTH */}
+            ></div>
             <div
               ref={ref.left}
               className="loader-left"
               style={{ height: "100%" }}
-            ></div>{" "}
-            {/* HEIGHT */}
+            ></div>
             <div
               ref={ref.bottom}
               className="loader-bottom"
               style={{ width: "100%" }}
-            ></div>{" "}
-            {/* WIDTH */}
+            ></div>
             <div
               ref={ref.right}
               className="loader-right"
               style={{ height: "100%" }}
-            ></div>{" "}
-            {/* HEIGHT */}
+            ></div>
           </>
         ) : (
           <>
@@ -133,6 +128,7 @@ export function LoadingScreen() {
         <div ref={ref.bottom} className="loader-bottom"></div>
         <div ref={ref.right} className="loader-right"></div>
       </div>
+      <div className="epilepsy-warning">P H O T O S E N S I T I V I T Y &nbsp; W A R N I N G</div>
     </div>
   );
 }
