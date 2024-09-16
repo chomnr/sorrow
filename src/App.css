@@ -32,10 +32,10 @@ body,
 }
 
 .epilepsy-warning {
-  border: 1px solid #D1001F;
-  color: #FF2C2C;
+  border: 1px solid #E06A6A;
+  color: #FF7A7A;
   padding: 5px;
-  font-size: 0.6rem;
+  font-size: 0.55rem;
   font-weight: 400;
 }
 
@@ -104,23 +104,23 @@ body,
 
 .loading-screen .loading-box.finished:hover {
   cursor: pointer;
-  color: #CBC3E3;
+  color: #FDF5F5;
 }
 
 .loading-screen .loading-box.finished:hover .loader-top {
-  background-color: #CBC3E3;
+  background-color: #ECEFF0;
 }
 
 .loading-screen .loading-box.finished:hover .loader-left {
-  background-color: #CBC3E3;
+  background-color: #ECEFF0;
 }
 
 .loading-screen .loading-box.finished:hover .loader-bottom {
-  background-color: #CBC3E3;
+  background-color: #ECEFF0;
 }
 
 .loading-screen .loading-box.finished:hover .loader-right {
-  background-color: #CBC3E3;
+  background-color: #ECEFF0;
 }
 
 
