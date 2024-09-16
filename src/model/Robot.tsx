@@ -1,16 +1,19 @@
 import { useEffect, useRef, useState } from "react";
 import { useGLTF, useAnimations } from "@react-three/drei";
 import {
+  AnimationAction,
   AnimationMixer,
   Group,
   MeshStandardMaterial,
   SkinnedMesh,
 } from "three";
+import { Phase, usePhase } from "../context/PhaseContext";
 
 export function Robot(props: JSX.IntrinsicElements["group"]) {
   const group = useRef<Group>(null);
   const { nodes, materials, animations } = useGLTF("/robot.glb");
   const { actions } = useAnimations(animations, group);
+  const { phase, setPhase } = usePhase();
 
   // Custom Material: Robot
   const robotShell = new MeshStandardMaterial({ color: "black", roughness: 1 });
@@ -18,13 +21,68 @@ export function Robot(props: JSX.IntrinsicElements["group"]) {
 
   // Animation Hook: Handles animations
   const action = actions["Animation_3"];
-  useEffect(() => {
-    if (action) {
-      action.play();
-      action.paused = true;
-    }
-  }, [action]);
 
+  if (action) {
+    action.play();
+    action.paused = true;
+  }
+
+  // Easter Egg: Annoyance
+  const [annoyance, setAnnoyance] = useState(0);
+  const annoy = () => {
+    setAnnoyance((prev) => prev + 1);
+    console.log(annoyance);
+  };
+  useEffect(() => {
+    const handleAnimation = (
+      action: AnimationAction,
+      targetPhase: Phase,
+      animationLimit: number,
+      callback: { (): void; (): void; (): void }
+    ) => {
+      const mixer = action.getMixer();
+      mixer.timeScale = 0.5;
+      action.play();
+      action.paused = false;
+      const intervalId = setInterval(() => {
+        mixer.update(0.016);
+        const animationTime = action.time;
+        if (animationTime >= animationLimit) {
+          action.paused = true;
+          clearInterval(intervalId);
+          setPhase(targetPhase);
+          if (callback) callback();
+        }
+      }, 1000 / 60);
+      return () => {
+        clearInterval(intervalId);
+        action.paused = true;
+      };
+    };
+
+    if (action && annoyance >= 17) {
+      // head up pause
+      if (phase === Phase.Begun) {
+        return handleAnimation(action, Phase.RobotAnnoyed, 4.9, () => {
+          setTimeout(() => {
+            setPhase(Phase.RobotCalming);
+          }, 5153);
+        });
+      }
+      // head down pause
+      if (phase === Phase.RobotCalming) {
+        const clipDuration = action.getClip().duration;
+        return handleAnimation(
+          action,
+          Phase.RobotCalmed,
+          clipDuration - 0.2,
+          () => {}
+        );
+      }
+    }
+  }, [action, annoyance, phase]);
+
+  /*
   // Easter Egg: Annoyance (Should be a one time easter egg.)
   const [annoyance, setAnnoyance] = useState(0);
   const annoy = () => {
@@ -59,7 +117,7 @@ export function Robot(props: JSX.IntrinsicElements["group"]) {
       };
     }
   }, [annoyance, action])
-
+*/
 
   /*
   useEffect(() => {
