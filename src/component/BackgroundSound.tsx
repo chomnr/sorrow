@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import { useSound } from "../context/SoundContext";
 
+
 // Gapless Audio
 export function BackgroundSound() {
   const { isSoundOn } = useSound();

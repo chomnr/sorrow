@@ -25,4 +25,4 @@ yarn-error.log*
 # Assets
 /public/image
 /public/sound
-/public/model
+robot.glb
