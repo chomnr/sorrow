@@ -19,7 +19,6 @@ export function Effect() {
 
   useEffect(() => {
     let glitch = glitchRef.current;
-
     if (glitch) {
       if (phase === Phase.RobotAnnoyed) {
         glitch.minStrength = 0.3;
@@ -54,7 +53,6 @@ export function Effect() {
       />
       <Bloom luminanceThreshold={0.3} luminanceSmoothing={0.8} height={300} />
       <Sepia intensity={0.6} />
-      <Noise opacity={0.03} />
       <Vignette eskil={false} offset={0.2} darkness={1.5} />
       <ChromaticAberration
         offset={new Vector2(0.002, 0.002)}
@@ -62,7 +60,7 @@ export function Effect() {
         modulationOffset={0}
       />
       <Glitch ref={glitchRef} delay={new Vector2(0.3, 0.3)} />
-      <Noise opacity={0.02} />
+      <Noise opacity={0.05} />
     </EffectComposer>
   );
 }
