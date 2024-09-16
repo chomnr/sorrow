@@ -41,6 +41,14 @@ export function Effect() {
         glitch.minDuration = 0.03;
         glitch.maxDuration = 0.07;
       }
+
+      if (phase === Phase.RobotAngry) {
+        glitch.minStrength = 0.5;
+        glitch.maxStrength = 0.9;
+        glitch.minDuration = 0.5;
+        glitch.maxDuration = 0.9;
+        glitch.ratio = 0.70;
+      }
     }
   });
   return (
