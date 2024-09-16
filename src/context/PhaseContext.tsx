@@ -1,12 +1,13 @@
 import React, { createContext, useContext, useState, ReactNode } from 'react';
 
 export enum Phase {
-  Loading = 0,
-  Loaded = 1,
-  Begun = 2,
-  RobotAnnoyed = 3,
-  RobotCalming = 4,
-  RobotCalmed = 5
+  Loading,
+  Loaded,
+  Begun,
+  RobotAnnoyed,
+  RobotCalming,
+  RobotCalmed,
+  RobotAngry
 }
 
 interface PhaseContextType {
