@@ -128,7 +128,7 @@ export function LoadingScreen() {
         <div ref={ref.bottom} className="loader-bottom"></div>
         <div ref={ref.right} className="loader-right"></div>
       </div>
-      <div className="epilepsy-warning">P H O T O S E N S I T I V I T Y &nbsp; W A R N I N G</div>
+      <div className="epilepsy-warning">W A R N I N G: &nbsp; P H O T O S E N S I T I V I T Y</div>
     </div>
   );
 }
