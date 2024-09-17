@@ -49,6 +49,13 @@ export function Effect() {
         glitch.maxDuration = 5;
         glitch.ratio = 0.70;
       }
+
+      if (phase === Phase.RobotForcefulDisconnect) {
+        glitch.minStrength = 0.01;
+        glitch.maxStrength = 0.01;
+        glitch.minDuration = 0.03;
+        glitch.maxDuration = 0.03;
+      }
     }
   });
   return (

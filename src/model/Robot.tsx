@@ -10,21 +10,21 @@ import {
 import { Phase, usePhase } from "../context/PhaseContext";
 
 export function Robot(props: JSX.IntrinsicElements["group"]) {
-  const group = useRef<Group>(null);
-  const { nodes, materials, animations } = useGLTF("/robot.glb");
-  const { actions } = useAnimations(animations, group);
-  const { phase, setPhase } = usePhase();
+  const group = useRef<Group>(null)
+  const { nodes, materials, animations } = useGLTF("/robot.glb")
+  const { actions } = useAnimations(animations, group)
+  const { phase, setPhase } = usePhase()
 
   // Custom Material: Robot
-  const robotShell = new MeshStandardMaterial({ color: "black", roughness: 1 });
-  const robotOrgan = new MeshStandardMaterial({ color: "black", roughness: 1 });
+  const robotShell = new MeshStandardMaterial({ color: "black", roughness: 1 })
+  const robotOrgan = new MeshStandardMaterial({ color: "black", roughness: 1 })
 
   // Animation Hook: Handles animations
   const action = actions["Animation_3"];
 
   if (action) {
-    action.play();
-    action.paused = true;
+    action.play()
+    action.paused = true
   }
 
   // Easter Egg: Annoyance
@@ -40,22 +40,22 @@ export function Robot(props: JSX.IntrinsicElements["group"]) {
       callback: { (): void; (): void; (): void }
     ) => {
       const mixer = action.getMixer();
-      mixer.timeScale = 0.5;
-      action.play();
-      action.paused = false;
+      mixer.timeScale = 0.5
+      action.play()
+      action.paused = false
       const intervalId = setInterval(() => {
-        mixer.update(0.016);
-        const animationTime = action.time;
+        mixer.update(0.016)
+        const animationTime = action.time
         if (animationTime >= animationLimit) {
-          action.paused = true;
-          clearInterval(intervalId);
-          setPhase(targetPhase);
-          if (callback) callback();
+          action.paused = true
+          clearInterval(intervalId)
+          setPhase(targetPhase)
+          if (callback) callback()
         }
       }, 1000 / 60);
       return () => {
-        clearInterval(intervalId);
-        action.paused = true;
+        clearInterval(intervalId)
+        action.paused = true
       };
     };
 
@@ -64,8 +64,8 @@ export function Robot(props: JSX.IntrinsicElements["group"]) {
       if (phase === Phase.Begun) {
         return handleAnimation(action, Phase.RobotAnnoyed, 4.9, () => {
           setTimeout(() => {
-            setAnnoyance(17);
-            setPhase(Phase.RobotCalming);
+            setAnnoyance(17)
+            setPhase(Phase.RobotCalming)
           }, 5153);
         });
       }
@@ -77,7 +77,7 @@ export function Robot(props: JSX.IntrinsicElements["group"]) {
           Phase.RobotCalmed,
           clipDuration - 0.2,
           () => {
-            setAnnoyance(17);
+            setAnnoyance(17)
           }
         );
       }
@@ -96,7 +96,21 @@ export function Robot(props: JSX.IntrinsicElements["group"]) {
         })
       }, 1100)
     }
-  }, [action, annoyance, phase, setPhase]);
+  }, [action, annoyance, phase, setPhase])
+
+  useEffect(() => {
+    if (phase === Phase.RobotAngry) {
+      setTimeout(() => {
+        let groupCurrent = group.current
+        if (groupCurrent) {
+          groupCurrent.visible = false
+          // 50/50 FORCEFULDISCONNECT OR KNOCKOUT ARE TWO SEPARATE ENDINGS
+          setPhase(Phase.RobotForcefulDisconnect)
+          // hide robot model here...
+        }
+      }, 1000)
+    }
+  })
 
   // Model
   return (
