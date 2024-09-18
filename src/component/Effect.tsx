@@ -46,7 +46,7 @@ export function Effect() {
         glitch.minStrength = 1;
         glitch.maxStrength = 5;
         glitch.minDuration = 1;
-        glitch.maxDuration = 5;
+        glitch.maxDuration = 2;
         glitch.ratio = 0.70;
       }
 
