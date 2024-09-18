@@ -106,7 +106,7 @@ export function Robot(props: JSX.IntrinsicElements["group"]) {
           // 50/50 FORCEFULDISCONNECT OR KNOCKOUT ARE TWO SEPARATE ENDINGS
           setTimeout(() => {
             setPhase(Phase.RobotForcefulDisconnect)
-          }, 2000)
+          }, 3000)
         }
       }, 1000)
     }
