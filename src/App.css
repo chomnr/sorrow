@@ -132,14 +132,13 @@ body,
   display: flex;
   flex-direction: column;
   gap: 7px;
-  opacity: 0.9;
   align-items: center;
   justify-content: center;
   width: inherit;
   height: inherit;
   word-break: break-all;
   user-select: none;
-  background: black;
+  background: rgba(0, 0, 0, 0.8);
   z-index: 1;
 }
 
