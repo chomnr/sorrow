@@ -123,6 +123,37 @@ body,
   background-color: #ECEFF0;
 }
 
+/*
+  DISCONNECT
+*/
+.disconnect-container {
+  position: absolute;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  opacity: 0.9;
+  align-items: center;
+  justify-content: center;
+  width: inherit;
+  height: inherit;
+  word-break: break-all;
+  user-select: none;
+  background: black;
+  z-index: 1;
+}
+
+.disconnect {
+  border: 1px solid #E06A6A;
+  color: #FF7A7A;
+  padding: 13px;
+  font-size: 1.2rem;
+  font-family: "Roboto Mono", monospace;
+}
+
+/*
+  OVERLAY
+*/
 
 .overlay {
   position: absolute;
