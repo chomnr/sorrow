@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from "react";
 import { useGLTF, useAnimations } from "@react-three/drei";
 import {
   AnimationAction,
-  AnimationMixer,
   Group,
   MeshStandardMaterial,
   SkinnedMesh,
@@ -105,8 +104,9 @@ export function Robot(props: JSX.IntrinsicElements["group"]) {
         if (groupCurrent) {
           groupCurrent.visible = false
           // 50/50 FORCEFULDISCONNECT OR KNOCKOUT ARE TWO SEPARATE ENDINGS
-          setPhase(Phase.RobotForcefulDisconnect)
-          // hide robot model here...
+          setTimeout(() => {
+            setPhase(Phase.RobotForcefulDisconnect)
+          }, 2000)
         }
       }, 1000)
     }
