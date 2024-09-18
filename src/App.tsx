@@ -13,23 +13,19 @@ import { Color, Euler, Vector3 } from "three";
 ////////////
 // REACT //
 //////////
-import { Suspense, useEffect } from "react";
-
-////////////
-// Model //
-//////////
-import { Scene } from "./component/Scene";
-import { Effect } from "./component/Effect";
-import { CameraControls } from "@react-three/drei";
-import { PhaseProvider, usePhase } from "./context/PhaseContext";
-import { LoadingScreen } from "./component/LoadingScreen";
-import { Overlay } from "./component/Overlay";
-import { BackgroundSound } from "./component/BackgroundSound";
-import { SoundContext, ToggleableSound } from "./context/SoundContext";
+import { Suspense } from "react";
 
 /////////////
 // CUSTOM //
 ///////////
+import { Phase, PhaseProvider, usePhase } from "./context/PhaseContext";
+import { LoadingScreen } from "./component/LoadingScreen";
+import { Overlay } from "./component/Overlay";
+import { BackgroundSound } from "./component/BackgroundSound";
+import { ToggleableSound } from "./context/SoundContext";
+import { Scene } from "./component/Scene";
+import { Effect } from "./component/Effect";
+import { DisconnectRobotUi } from "./component/Disconnect";
 
 // do code here...
 
@@ -58,6 +54,7 @@ export const CAMERA_TRUCK_SPEED = 0;
 // CORE //
 /////////
 function App() {
+  let { phase } = usePhase()
   return (
     <PhaseProvider>
       <Canvas
@@ -78,6 +75,7 @@ function App() {
         <LoadingScreen />
         <BackgroundSound />
         <Overlay />
+        <DisconnectRobotUi />
       </ToggleableSound>
     </PhaseProvider>
   );
