@@ -8,8 +8,7 @@ export enum Phase {
   RobotCalming,
   RobotCalmed,
   RobotAngry,
-  RobotForcefulDisconnect,
-  RobotKnockout
+  RobotForcefulDisconnect
 }
 
 interface PhaseContextType {
