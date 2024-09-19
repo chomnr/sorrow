@@ -2,6 +2,8 @@
 
 This is my portfolio site, which was built using React, TypeScript and three.js(react-three-fiber). It's nothing special; I've always wanted to create a 3D-style website. I hope you enjoy it! Also, the sounds are indeed custom, and should not be used anywhere except my website, if you have any questions you can contact me at <samp><a href="mailto:zeljkovranjes@outlook.com">zeljkovranjes@outlook.com</a></samp>. I'm also looking for a programming job preferably backend.
 
+Also, there's a little easter egg hint: click the robot multiple times.
+
 ## Available Scripts
 
 In the project directory, you can run:
