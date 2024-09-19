@@ -23,6 +23,5 @@ yarn-debug.log*
 yarn-error.log*
 
 # Assets
-/public/image
 /public/sound
 robot.glb
