@@ -116,7 +116,7 @@ export function Robot(props: JSX.IntrinsicElements["group"]) {
                 audio.play();
                 setTimeout(() => {
                   setPhase(Phase.RobotForcefulDisconnect);
-                }, 760);
+                }, 783);
               } else {
                 let audio = new Audio("/sound/sfx_disconnect_03.wav");
                 audio.play();

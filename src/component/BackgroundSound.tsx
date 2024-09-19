@@ -1,9 +1,48 @@
 import { useEffect, useRef } from "react";
 import { useSound } from "../context/SoundContext";
 import { Phase, usePhase } from "../context/PhaseContext";
+import { Howl } from "howler";
 
-// Gapless Audio 
-// todo switch to howler.js
+// Gapless Audio
+export function BackgroundSound() {
+  const { isSoundOn } = useSound()
+  const { phase } = usePhase()
+  const soundRef = useRef<Howl | null>(null)
+
+  useEffect(() => {
+    if (isSoundOn && phase !== Phase.Loading && phase !== Phase.Loaded && phase !== Phase.RobotForcefulDisconnect) {
+      if (!soundRef.current) {
+        const sound = new Howl({
+          src: ["/sound/amb_void_loop_3.wav"],
+          volume: 0,
+          loop: true,
+          onload: () => {
+            sound.play()
+            sound.fade(0, 1, 2000)
+          },
+        })
+        soundRef.current = sound
+      }
+    }
+    if (!isSoundOn || phase === Phase.RobotForcefulDisconnect) {
+      if (soundRef.current) {
+        soundRef.current.stop()
+        soundRef.current = null
+      }
+    }
+  }, [isSoundOn, phase])
+
+  useEffect(() => {
+    return () => {
+      soundRef.current?.stop()
+      soundRef.current = null
+    }
+  }, [])
+
+  return null
+}
+
+/*
 export function BackgroundSound() {
   const { isSoundOn } = useSound();
   const { phase } = usePhase();
@@ -123,3 +162,4 @@ export function BackgroundSound() {
 
   return <div></div>;
 }
+*/
