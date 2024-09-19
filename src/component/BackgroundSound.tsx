@@ -25,7 +25,7 @@ export function BackgroundSound() {
 
       const source = context.createBufferSource();
       source.buffer = audioBuffer;
-      source.loop = true;
+      source.loop = true; // not necessary...
 
       source.connect(gainNode);
       gainNode.connect(context.destination);
