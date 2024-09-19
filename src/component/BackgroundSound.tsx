@@ -2,7 +2,8 @@ import { useEffect, useRef } from "react";
 import { useSound } from "../context/SoundContext";
 import { Phase, usePhase } from "../context/PhaseContext";
 
-// Gapless Audio
+// Gapless Audio 
+// todo switch to howler.js
 export function BackgroundSound() {
   const { isSoundOn } = useSound();
   const { phase } = usePhase();
@@ -10,15 +11,21 @@ export function BackgroundSound() {
   const sourceRef = useRef<AudioBufferSourceNode | null>(null);
   const gainNodeRef = useRef<GainNode | null>(null);
 
-  let audioUrl = '/sound/amb_void_loop_3.wav';
+  const audioUrl = '/sound/amb_void_loop_3.wav';
   const fadeDuration = 1;
 
   const playLoopingAudio = (audioBuffer: AudioBuffer) => {
     const context = audioContextRef.current;
     const gainNode = gainNodeRef.current;
     if (context && gainNode) {
+      const previousSource = sourceRef.current;
+      if (previousSource) {
+        previousSource.stop();
+      }
+
       const source = context.createBufferSource();
       source.buffer = audioBuffer;
+      source.loop = true;
 
       source.connect(gainNode);
       gainNode.connect(context.destination);
@@ -26,7 +33,6 @@ export function BackgroundSound() {
       gainNode.gain.setValueAtTime(0, context.currentTime);
       gainNode.gain.linearRampToValueAtTime(1, context.currentTime + fadeDuration);
 
-      source.loop = true;
       source.start(0);
       sourceRef.current = source;
     }
@@ -38,7 +44,6 @@ export function BackgroundSound() {
     const context = audioContextRef.current;
 
     if (source && context && gainNode) {
-      // Fade out before stopping
       gainNode.gain.linearRampToValueAtTime(0, context.currentTime + fadeDuration);
       setTimeout(() => {
         source.stop();
@@ -48,7 +53,14 @@ export function BackgroundSound() {
   };
 
   useEffect(() => {
-    const audioContext = new (window.AudioContext || window.AudioContext)();
+    const resumeAudioContext = async () => {
+      const context = audioContextRef.current;
+      if (context && context.state === 'suspended') {
+        await context.resume();
+      }
+    };
+
+    const audioContext = new (window.AudioContext)();
     const gainNode = audioContext.createGain();
     gainNodeRef.current = gainNode;
     audioContextRef.current = audioContext;
@@ -77,7 +89,16 @@ export function BackgroundSound() {
 
     loadAudio();
 
+    const handleUserInteraction = async () => {
+      await resumeAudioContext();
+    };
+
+    window.addEventListener('touchstart', handleUserInteraction, { passive: true });
+    window.addEventListener('click', handleUserInteraction, { passive: true });
+
     return () => {
+      window.removeEventListener('touchstart', handleUserInteraction);
+      window.removeEventListener('click', handleUserInteraction);
       const context = audioContextRef.current;
       if (context) {
         context.close();
