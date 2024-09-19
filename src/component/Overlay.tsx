@@ -38,6 +38,13 @@ export function Overlay() {
               alt="sound-speaker"
             />
           </div>
+          <div className="question-container">
+            <img
+              onClick={() => {}}
+              src="/image/question.png"
+              alt="question-mark"
+            />
+          </div>
         </div>
       </div>
     </>

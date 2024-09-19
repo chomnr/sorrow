@@ -223,6 +223,7 @@ body,
   position: absolute;
   bottom: 0;
   pointer-events: auto;
+  width: inherit;
 }
 
 .overlay .sound-container {
@@ -231,8 +232,16 @@ body,
   position: relative;
   padding: 41px;
   gap: 13px;
+  flex: 1;
   font-family: "Roboto Mono", monospace;
   user-select: none;
+}
+
+.overlay .question-container {
+  display: flex;
+  align-items: center;
+  user-select: none;
+  padding: 41px
 }
 
 .overlay .sound-container  img{
@@ -306,247 +315,3 @@ body,
     display: block;
   }
 }
-/*
-  OVERLAY
-
-.overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 10;
-  pointer-events: "none";
-}
-
-.bottom-container {
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  top: 17px;
-  margin-left: auto;
-  margin-right: auto;
-  left: 0;
-  right: 0;
-  text-align: center;
-  gap: 7px;
-}
-
-.bottom-container .title {
-  font-size: 2rem;
-  font-weight: 500;
-  user-select: none;
-}
-
-.bottom-container .subtitle {
-  font-size: 1rem;
-  user-select: none;
-}
-
-.bottom-container nav {
-  font-size: 0.8rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 11px;
-}
-
-.bottom-container nav a {
-  color: lightgray;
-  text-decoration: none;
-  user-select: none;
-  cursor: pointer;
-}
-
-.bottom-container nav a:hover {
-  color: white;
-}
-
-.toggleable-sound-container {
-  position: absolute;
-  bottom: 37px;
-  left: 37px;
-  font-weight: 600;
-  user-select: none;
-  gap: 13px;
-  font-size: 0.8rem;
-  justify-items: center;
-  align-items: center;
-  cursor: pointer;
-}
-
-@media (max-width: 480px) {
-  .toggleable-sound-container {
-    display: none;
-  }
-}
-
-@media (max-width: 767px) {
-  .toggleable-sound-container {
-    display: none;
-  }
-}
-
-@media (min-width: 768px) and (max-width: 979px) {
-  .toggleable-sound-container {
-    display: none;
-  }
-}
-
-@media (min-width: 1200px) {
-  .toggleable-sound-container {
-    display: flex;
-  }
-}
-*/
-
-/*
-  CCTV UI 
-
-.cctv-container {
-  position: absolute;
-  top: 0;
-  left: 0;
-  color: white;
-  z-index: 1;
-  width: 100vw;
-  height: 100vh;
-}
-
-.cctv-corner-lines {
-  position: absolute;
-  padding: 13px;
-}
-
-.cctv-line-vertical {
-  background-color: white;
-  width: 2px;
-  height: 105px;
-  opacity: 0.8;
-}
-
-.cctv-line-horizontal {
-  background-color: white;
-  width: 105px;
-  height: 2px;
-  opacity: 0.8;
-}
-
-.cctv-info-container {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  user-select: none;
-}
-
-.cctv-info-item {
-  width: 250px;
-}
-*/
-
-/*
-* {
-  box-sizing: border-box;
-  padding: 0px;
-  margin: 0px;
-  font-family: "Helvetica";
-}
-
-@font-face {
-  font-family: "Helvetica";
-  font-style: normal;
-  font-weight: normal;
-  src: local("Helvetica"), url("/public/font/Helvetica.woff") format("woff");
-}
-
-.cctv {
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  padding: 13px;
-  color: "gray";
-  z-index: 1;
-  color: white;
-  width: 100vw;
-  height: 100vh;
-}
-
-.cctv-line-group {
-  position: absolute;
-}
-
-.cam-line {
-  background-color: white;
-  width: 2px;
-  height: 105px;
-  opacity: 0.8;
-}
-
-.cam-line-v2 {
-  background-color: white;
-  width: 2px;
-  height: 105px;
-  opacity: 0.8;
-}
-
-.cam-top-line {
-  background-color: white;
-  width: 105px;
-  height: 2px;
-  opacity: 0.8;
-}
-
-
-.cctv-info-group {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  user-select: none;
-}
-
-.cctv-info-group .cctv-info {
-  width: 250px;
-}
-
-.record-pulse {
-  background: white;
-  border-radius: 50%;
-  height: 12px;
-  width: 12px;
-
-  box-shadow: 0 0 0 0 rgba(230, 230, 230);
-  transform: scale(1);
-  animation: pulse 2s infinite;
-  top: 23px;
-  left: 23px;
-}
-
-@keyframes pulse {
-  0% {
-    transform: scale(0.6);
-    box-shadow: 0 0 0 0 rgba(230, 230, 230, 0.7);
-  }
-
-  70% {
-    transform: scale(0.7);
-    box-shadow: 0 0 0 10px rgba(230, 230, 230);
-  }
-
-  100% {
-    transform: scale(0.6);
-    box-shadow: 0 0 0 0 rgba(230, 230, 230);
-  }
-}
-
-.record-pulse-label {
-  position: absolute;
-  top: 35px;
-  left: 70px;
-}
-*/
