@@ -32,11 +32,9 @@ body,
 }
 
 .epilepsy-warning {
-  position: absolute;
   border: 1px solid #E06A6A;
   color: #FF7A7A;
   padding: 5px;
-  bottom: 485px;
   font-size: 0.6rem;
   font-weight: 400;
 }
