@@ -5,7 +5,7 @@ export function Overlay() {
   const { phase } = usePhase();
   const { isSoundOn, toggleSound } = useSound();
 
-  if (phase === Phase.Loading || phase === Phase.Loaded || phase === Phase.RobotForcefulDisconnect || phase === Phase.RobotKnockout) {
+  if (phase === Phase.Loading || phase === Phase.Loaded || phase === Phase.RobotForcefulDisconnect) {
     return null;
   }
 

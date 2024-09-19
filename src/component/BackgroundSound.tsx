@@ -86,7 +86,7 @@ export function BackgroundSound() {
   }, [audioUrl, isSoundOn]);
 
   useEffect(() => {
-    if (phase === Phase.RobotForcefulDisconnect || phase === Phase.RobotKnockout) {
+    if (phase === Phase.RobotForcefulDisconnect) {
       stopAudio();
     } else if (isSoundOn && !sourceRef.current) {
       fetch(audioUrl)

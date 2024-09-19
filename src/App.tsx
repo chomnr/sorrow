@@ -27,8 +27,6 @@ import { Scene } from "./component/Scene";
 import { Effect } from "./component/Effect";
 import { DisconnectRobotUi } from "./component/Disconnect";
 
-// do code here...
-
 ///////////////
 // SETTINGS //
 /////////////
