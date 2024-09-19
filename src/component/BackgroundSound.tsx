@@ -111,9 +111,9 @@ export function BackgroundSound() {
       stopAudio();
     } else if (isSoundOn && !sourceRef.current) {
       fetch(audioUrl)
-        .then(res => res.arrayBuffer())
-        .then(buffer => audioContextRef.current?.decodeAudioData(buffer))
-        .then(decodedBuffer => {
+        .then((res) => res.arrayBuffer())
+        .then((buffer) => audioContextRef.current?.decodeAudioData(buffer))
+        .then((decodedBuffer) => {
           if (decodedBuffer) {
             playLoopingAudio(decodedBuffer);
           }
