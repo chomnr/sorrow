@@ -105,16 +105,25 @@ export function Robot(props: JSX.IntrinsicElements["group"]) {
         let groupCurrent = group.current;
         if (groupCurrent) {
           groupCurrent.visible = false;
-          // 50/50 FORCEFULDISCONNECT OR KNOCKOUT ARE TWO SEPARATE ENDINGS
+          let hasPlayedSound = false;
+
           setTimeout(() => {
-            console.log(isSoundOn)
-            if (isSoundOn) {
-              let audio = new Audio("/sound/sfx_disconnect_03.wav");
-              audio.play();
-              setTimeout(() => {
-                setPhase(Phase.RobotForcefulDisconnect);
-              }, 400);
-            } else {
+            if (!hasPlayedSound && isSoundOn) {
+              hasPlayedSound = true;
+              if (Math.random() < 0.5) {
+                let audio = new Audio("/sound/sfx_robot_smash_02.wav");
+                audio.play();
+                setTimeout(() => {
+                  setPhase(Phase.RobotForcefulDisconnect);
+                }, 735);
+              } else {
+                let audio = new Audio("/sound/sfx_disconnect_03.wav");
+                audio.play();
+                setTimeout(() => {
+                  setPhase(Phase.RobotForcefulDisconnect);
+                }, 400);
+              }
+            } else if (!isSoundOn) {
               setPhase(Phase.RobotForcefulDisconnect);
             }
           }, 2000);
