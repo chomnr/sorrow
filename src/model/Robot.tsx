@@ -31,7 +31,8 @@ export function Robot(props: JSX.IntrinsicElements["group"]) {
   // Easter Egg: Annoyance
   const [annoyance, setAnnoyance] = useState(0);
   const annoy = () => {
-    setAnnoyance((prev) => prev + 1);
+    if (phase !== Phase.RobotAngry)
+      setAnnoyance((prev) => prev + 1);
   };
   useEffect(() => {
     const handleAnimation = (
