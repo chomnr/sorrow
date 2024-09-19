@@ -54,24 +54,24 @@ export const CAMERA_TRUCK_SPEED = 0;
 // CORE //
 /////////
 function App() {
-  let { phase } = usePhase()
+  let { phase } = usePhase();
   return (
     <PhaseProvider>
-      <Canvas
-        gl={{ antialias: false }}
-        dpr={WEBGL_DPR}
-        camera={{ position: WEBGL_POS, fov: WEBGL_FOV }}
-      >
-        <Suspense fallback={null}>
-          <color
-            attach={"background"}
-            args={[WEBGL_BG.r, WEBGL_BG.g, WEBGL_BG.b]}
-          />
-          <Scene />
-          <Effect />
-        </Suspense>
-      </Canvas>
       <ToggleableSound>
+        <Canvas
+          gl={{ antialias: false }}
+          dpr={WEBGL_DPR}
+          camera={{ position: WEBGL_POS, fov: WEBGL_FOV }}
+        >
+          <Suspense fallback={null}>
+            <color
+              attach={"background"}
+              args={[WEBGL_BG.r, WEBGL_BG.g, WEBGL_BG.b]}
+            />
+            <Scene />
+            <Effect />
+          </Suspense>
+        </Canvas>
         <LoadingScreen />
         <BackgroundSound />
         <Overlay />

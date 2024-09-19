@@ -8,7 +8,7 @@ export function DisconnectRobotUi() {
   }
   return (
     <div className="disconnect-container">
-      <div className="disconnect">DISCONNECTED</div>
+      <div className="disconnect">LOST SIGNAL</div>
     </div>
   );
 }
