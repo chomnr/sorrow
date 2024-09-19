@@ -8,7 +8,6 @@ export function BackgroundSound() {
   const { isSoundOn } = useSound()
   const { phase } = usePhase()
   const soundRef = useRef<Howl | null>(null)
-
   useEffect(() => {
     if (isSoundOn && phase !== Phase.Loading && phase !== Phase.Loaded && phase !== Phase.RobotForcefulDisconnect) {
       if (!soundRef.current) {
