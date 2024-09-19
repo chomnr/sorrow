@@ -20,37 +20,45 @@ export function LoadingScreen() {
   };
 
   useEffect(() => {
-    if (phase === Phase.Loading) {
-      const t = ref.top.current;
-      const r = ref.right.current;
-      const b = ref.bottom.current;
-      const l = ref.left.current;
-
-      if (t && r && b && l) {
-        const p = progress;
-
-        if (p >= 0 && p <= 25) {
-          t.style.width = `${Math.min(p * 4, 100)}%`;
-        } else if (p > 25 && p <= 50) {
-          t.style.width = "100%";
-          r.style.height = `${Math.min((p - 25) * 4, 100)}%`;
-        } else if (p > 50 && p <= 75) {
-          r.style.height = "100%";
-          b.style.width = `${Math.min((p - 50) * 4, 100)}%`;
-        } else if (p > 75 && p <= 100) {
-          let lb = ref.box.current;
-          if (lb) {
-            lb.classList.add("finished");
-          }
-          t.style.width = "100%";
-          r.style.height = "100%";
-          b.style.width = "100%";
-          l.style.height = "100%";
-
-          setPhase(Phase.Loaded);
+    const updateLoader = (
+      loaderRef: React.RefObject<HTMLDivElement>,
+      isWidth: boolean,
+      value: number,
+      nextLoaderFn?: () => void
+    ) => {
+      if (loaderRef.current) {
+        const currentValue =
+          parseFloat(
+            isWidth
+              ? loaderRef.current.style.width
+              : loaderRef.current.style.height
+          ) || 0;
+        const newValue = Math.min(currentValue + 1, value);
+        if (isWidth) {
+          loaderRef.current.style.width = `${newValue}%`;
+        } else {
+          loaderRef.current.style.height = `${newValue}%`;
+        }
+        if (newValue < value) {
+          updateLoader(loaderRef, isWidth, value, nextLoaderFn);
+        } else if (nextLoaderFn) {
+          setTimeout(nextLoaderFn, 800);
         }
       }
-    }
+    };
+
+    const value = Math.min(progress, 100);
+
+    updateLoader(ref.top, true, value, () => {
+      updateLoader(ref.right, false, value, () => {
+        updateLoader(ref.bottom, true, value, () => {
+          updateLoader(ref.left, false, value, () => {
+            setPhase(Phase.Loaded);
+            if (ref.box.current) ref.box.current.classList.add("finished");
+          });
+        });
+      });
+    });
 
     if (phase === Phase.Begun) {
       let screen = ref.screen.current;
@@ -59,15 +67,15 @@ export function LoadingScreen() {
       }
     }
   }, [
-    progress,
     phase,
-    ref.top,
-    ref.left,
+    progress,
     ref.bottom,
-    ref.right,
     ref.box,
-    setPhase,
+    ref.left,
+    ref.right,
     ref.screen,
+    ref.top,
+    setPhase,
   ]);
 
   return (
@@ -84,7 +92,7 @@ export function LoadingScreen() {
         }}
         className="loading-box"
       >
-        {progress === 100 ? (
+        {phase === Phase.Loaded ? (
           <>
             <div
               ref={ref.button}
@@ -128,7 +136,11 @@ export function LoadingScreen() {
         <div ref={ref.bottom} className="loader-bottom"></div>
         <div ref={ref.right} className="loader-right"></div>
       </div>
-      <div className="epilepsy-warning">W A R N I N G: &nbsp; P H O T O S E N S I T I V I T Y</div>
+      {phase === Phase.Loaded && (
+        <div className="epilepsy-warning">
+          W A R N I N G: &nbsp; P H O T O S E N S I T I V I T Y
+        </div>
+      )}
     </div>
   );
 }
