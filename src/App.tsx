@@ -54,7 +54,6 @@ export const CAMERA_TRUCK_SPEED = 0;
 // CORE //
 /////////
 function App() {
-  let { phase } = usePhase();
   return (
     <PhaseProvider>
       <ToggleableSound>
