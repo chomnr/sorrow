@@ -65,7 +65,7 @@ export function Robot(props: JSX.IntrinsicElements["group"]) {
       if (phase === Phase.Begun) {
         return handleAnimation(action, Phase.RobotAnnoyed, 4.9, () => {
           setTimeout(() => {
-            setAnnoyance(17);
+            setAnnoyance(10);
             setPhase(Phase.RobotCalming);
           }, 5153);
         });
@@ -78,7 +78,7 @@ export function Robot(props: JSX.IntrinsicElements["group"]) {
           Phase.RobotCalmed,
           clipDuration - 0.2,
           () => {
-            setAnnoyance(17);
+            setAnnoyance(10);
           }
         );
       }
@@ -115,7 +115,7 @@ export function Robot(props: JSX.IntrinsicElements["group"]) {
                 audio.play();
                 setTimeout(() => {
                   setPhase(Phase.RobotForcefulDisconnect);
-                }, 735);
+                }, 760);
               } else {
                 let audio = new Audio("/sound/sfx_disconnect_03.wav");
                 audio.play();
