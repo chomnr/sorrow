@@ -1,11 +1,17 @@
+import { useState } from "react";
 import { Phase, usePhase } from "../context/PhaseContext";
 import { useSound } from "../context/SoundContext";
 
 export function Overlay() {
   const { phase } = usePhase();
   const { isSoundOn, toggleSound } = useSound();
+  const [showInfo, setShowInfo] = useState(false);
 
-  if (phase === Phase.Loading || phase === Phase.Loaded || phase === Phase.RobotForcefulDisconnect) {
+  if (
+    phase === Phase.Loading ||
+    phase === Phase.Loaded ||
+    phase === Phase.RobotForcefulDisconnect
+  ) {
     return null;
   }
 
@@ -40,10 +46,31 @@ export function Overlay() {
           </div>
           <div className="question-container">
             <img
-              onClick={() => {}}
+              onClick={() => setShowInfo(!showInfo)}
               src="/image/question.png"
               alt="question-mark"
             />
+          </div>
+        </div>
+
+        <div
+          className="info-container"
+          style={{ display: showInfo ? "flex" : "none" }}
+        >
+          <div className="date">September 19th, 2024</div>
+          <div className="title">ABOUT</div>
+          <div className="body">
+            This website is trying to convey how I felt over the past three
+            years and at the same time display my programming abilities. It may
+            come off as messy and cryptic, but don't overthink it.
+            <div style={{ display: "flex", alignItems: "center", gap: "17px" }}>
+              You can close this by clicking{" "}
+              <img
+                onClick={() => {}}
+                src="/image/question.png"
+                alt="question-mark"
+              />
+            </div>
           </div>
         </div>
       </div>
