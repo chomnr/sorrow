@@ -60,10 +60,16 @@ export function Overlay() {
           <div className="date">September 19th, 2024</div>
           <div className="title">ABOUT</div>
           <div className="body">
-            This website is trying to convey how I felt over the past three
-            years and at the same time display my programming abilities. It may
-            come off as messy and cryptic, but don't overthink it.
-            <div style={{ display: "flex", alignItems: "center", gap: "17px" }}>
+            Sadness, disappointment, and misfortune. These past few years have
+            been tough for many of us, including me. These statement(s) were a
+            source of inspiration for my portfolio site. I tried to imbue how I
+            felt onto this website, hence the dark atmosphere. While it is a
+            portfolio, I tried showcasing my capabilities. I really hope you
+            enjoy it.
+            <div
+              className="close"
+              style={{ display: "flex", alignItems: "center", gap: "17px" }}
+            >
               You can close this by clicking{" "}
               <img
                 onClick={() => {}}

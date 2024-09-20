@@ -255,7 +255,7 @@ body,
   transform: translate(-50%, -50%);
   font-family: "Roboto Mono", monospace;
   max-width: 350px;
-  word-break: break-word;
+  word-break: break-all;
   gap: 5px;
 }
 
@@ -283,6 +283,7 @@ body,
   text-align: justify;
   word-spacing: -2px;
 }
+
 
 .overlay .info-container .body {
   font-size: 0.85rem;
@@ -346,6 +347,10 @@ body,
     word-spacing: -1px;
     font-size: 0.75rem;
     word-break: break-all;
+  }
+
+  .overlay .info-container .close {
+    font-size: 0.6rem;
   }
 }
 
