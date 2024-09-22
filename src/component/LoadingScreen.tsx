@@ -89,8 +89,8 @@ export function LoadingScreen() {
               setPhase(Phase.Begun);
               let audio = new Audio("/sound/wooshes/sfx_whoosh_4.wav");
               audio.play();
-              toggleSound();
-            }, 59);
+            }, 300);
+            toggleSound();
           }
         }}
         className="loading-box"
