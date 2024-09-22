@@ -84,12 +84,11 @@ export function LoadingScreen() {
         ref={ref.box}
         onClick={() => {
           if (phase === Phase.Loaded) {
-            // timeout fixes bug where camera messes up when people spam the begin button
             setTimeout(() => {
               setPhase(Phase.Begun);
               let audio = new Audio("/sound/wooshes/sfx_whoosh_4.wav");
               audio.play();
-            }, 300);
+            }, 200);
             toggleSound();
           }
         }}

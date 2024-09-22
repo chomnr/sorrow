@@ -5,43 +5,48 @@ import { Howl } from "howler";
 
 // Gapless Audio
 export function BackgroundSound() {
-  const { isSoundOn } = useSound()
-  const { phase } = usePhase()
-  const soundRef = useRef<Howl | null>(null)
+  const { isSoundOn } = useSound();
+  const { phase } = usePhase();
+  const soundRef = useRef<Howl | null>(null);
   useEffect(() => {
-    if (isSoundOn && phase !== Phase.Loading && phase !== Phase.Loaded && phase !== Phase.RobotForcefulDisconnect) {
+    if (
+      isSoundOn &&
+      phase !== Phase.Loading &&
+      phase !== Phase.Loaded &&
+      phase !== Phase.RobotForcefulDisconnect
+    ) {
       if (!soundRef.current) {
         // timeout fixes bug where camera messes up when people spam the begin button it disables sound.
         setTimeout(() => {
-        const sound = new Howl({
-          src: ["/sound/amb_void_loop_3.wav"],
-          volume: 0,
-          loop: true,
-          onload: () => {
-            sound.play()
-            sound.fade(0, 1, 2000)
-          },
-        })
-        soundRef.current = sound
-      }, 300)
+          const sound = new Howl({
+            src: ["/sound/amb_void_loop_3.wav"],
+            volume: 0,
+            loop: true,
+            onload: () => {
+              sound.play();
+              sound.fade(0, 1, 2000);
+            },
+          });
+          soundRef.current = sound;
+        }, 200)
       }
     }
     if (!isSoundOn || phase === Phase.RobotForcefulDisconnect) {
       if (soundRef.current) {
-        soundRef.current.stop()
-        soundRef.current = null
+        soundRef.current.stop();
+        soundRef.current = null;
       }
     }
-  }, [isSoundOn, phase])
+  }, [isSoundOn, phase]);
 
   useEffect(() => {
     return () => {
-      soundRef.current?.stop()
-      soundRef.current = null
-    }
-  }, [])
+      soundRef.current?.stop();
+      soundRef.current = null;
+    };
+  }, []);
 
-  return null
+  return null;
 }
 
 /*
