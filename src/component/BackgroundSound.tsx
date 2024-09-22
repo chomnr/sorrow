@@ -17,7 +17,6 @@ export function BackgroundSound() {
     ) {
       if (!soundRef.current) {
         // timeout fixes bug where camera messes up when people spam the begin button it disables sound.
-        setTimeout(() => {
           const sound = new Howl({
             src: ["/sound/amb_void_loop_3.wav"],
             volume: 0,
@@ -28,7 +27,6 @@ export function BackgroundSound() {
             },
           });
           soundRef.current = sound;
-        }, 200)
       }
     }
     if (!isSoundOn || phase === Phase.RobotForcefulDisconnect) {

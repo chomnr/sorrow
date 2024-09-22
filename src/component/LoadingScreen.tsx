@@ -1,12 +1,12 @@
 import { useProgress } from "@react-three/drei";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Phase, usePhase } from "../context/PhaseContext";
 import { useSound } from "../context/SoundContext";
 
 export function LoadingScreen() {
   const { progress } = useProgress();
   const { phase, setPhase } = usePhase();
-  const { toggleSound } = useSound();
+  const { isSoundOn, toggleSound } = useSound();
 
   // References
   const ref = {
@@ -83,12 +83,14 @@ export function LoadingScreen() {
       <div
         ref={ref.box}
         onClick={() => {
-          if (phase === Phase.Loaded) {
-            setTimeout(() => {
+          setTimeout(() => {
+            if (phase === Phase.Loaded) {
               setPhase(Phase.Begun);
               let audio = new Audio("/sound/wooshes/sfx_whoosh_4.wav");
               audio.play();
-            }, 200);
+            }
+          }, 250);
+          if (!isSoundOn) {
             toggleSound();
           }
         }}

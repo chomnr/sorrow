@@ -35,6 +35,7 @@ import {
 } from "../App";
 import { Phase, usePhase } from "../context/PhaseContext";
 import { useEffect, useRef } from "react";
+import { useSound } from "../context/SoundContext";
 
 export function Scene() {
   const { phase } = usePhase();
